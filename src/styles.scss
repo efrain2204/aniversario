@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Dancing Script', cursive, 'Pinyon Script', serif;
+  font-weight: 400; /* Usamos un peso de fuente legible */
+
+}
+* {
+  font-family: 'Dancing Script', cursive, 'Pinyon Script', serif;
+  font-weight: 700; /* Puedes usar un peso de fuente más grueso para los títulos */
+  font-size: 18px;
+}

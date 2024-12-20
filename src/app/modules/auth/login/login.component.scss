@@ -1,4 +1,4 @@
-.containerHeart{
+.containerHeart {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -8,19 +8,30 @@
   align-items: center;
   flex-direction: column;
   font-family: sans-serif;
-  background-color: skyblue;
+  background: linear-gradient(135deg, #2a2a72, #ff5f6d, #ffc371);
 }
-::ng-deep .hearts{
+
+::ng-deep .hearts {
   font-size: 23px;
   font-weight: bold;
   position: fixed;
   transform: translateY(0%);
-  top:-1vh;
+  top: -1vh;
   left: 0;
-  animation: fall 1s ease-in-out infinite;
+  animation: fall 20s ease-in-out infinite;
 }
-@keyframes fall{
-  to{
-    transform: translateY(250vh);
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
   }
 }
+
+.login {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+

@@ -1,0 +1,60 @@
+/* heart-button.component.css */
+.button-container {
+  position: relative;
+  display: inline-block;
+}
+
+.heart-button {
+  background-color: #ff5f6d;
+  color: white;
+  font-size: 20px;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.heart-button:hover {
+  transform: scale(1.1);
+}
+
+.hearts-container {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.heart {
+  font-size: 24px;
+  animation: heartAnimation 1s ease-in-out forwards;
+}
+
+@keyframes heartAnimation {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-50px) scale(1.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(2);
+  }
+}
+
+/* Soporte para dispositivos móviles */
+@media screen and (max-width: 600px) {
+  .heart-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .heart {
+    font-size: 20px;
+  }
+}

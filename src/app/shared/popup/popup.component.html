@@ -1,0 +1,11 @@
+<div class="popup-overlay" (click)="closePopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <div style="display: flex; justify-content: space-between">
+      <span class="title-button">{{ label }}</span>
+      <button (click)="closePopup()" class="close-button">X</button>
+    </div>
+    <div style="padding: 30px 0 0 0">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

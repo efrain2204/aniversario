@@ -1,4 +1,13 @@
 <div class="containerHeart">
-  <h1>Efrain</h1>
-  <p>porfa presioname</p>
+  <div class="login">
+    <bunny-input [control]="input"></bunny-input>
+    <app-button (click)="modal()"></app-button>
+  </div>
 </div>
+<app-popup
+  *ngIf="openModalLogin"
+  (clickClose)="modal()"
+  label="Alto ahi!!">
+
+  <app-image-renderer imageUrl="https://media1.tenor.com/m/zkiftqiQCaUAAAAd/good-night-cute-cartoon-gif.gif"></app-image-renderer>
+</app-popup>
