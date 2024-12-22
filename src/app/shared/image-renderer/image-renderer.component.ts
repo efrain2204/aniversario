@@ -10,4 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class ImageRendererComponent {
   @Input() imageUrl: string = '';
+  @Input() width: string = '100%'; // Ancho por defecto
+  @Input() height: string = 'auto'; // Alto por defecto
 }

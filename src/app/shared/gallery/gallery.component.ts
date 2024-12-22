@@ -41,13 +41,9 @@ export class ViewGalleryComponent implements OnInit{
     'assets/images/foto28.jpg'
   ];
 
-  constructor(private router:Router) {
-  }
-
   ngOnInit() {
    }
 
-  // Aleatoriza el orden de las imágenes
   shuffleArray(array: string[]): string[] {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -56,7 +52,6 @@ export class ViewGalleryComponent implements OnInit{
     return array;
   }
 
-  // Abre el modal con la imagen seleccionada
   openModal(imageSrc: string): void {
     const modal = document.getElementById('myModal') as HTMLElement;
     const modalImg = document.getElementById('modal-img') as HTMLImageElement;
@@ -69,7 +64,5 @@ export class ViewGalleryComponent implements OnInit{
     modal.style.display = 'none'; // Oculta el modal
   }
 
-  back(){
-    this.router.navigate(['/dashboard']);
-  }
+
 }

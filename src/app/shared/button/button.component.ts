@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class ButtonComponent{
   @Input() label = 'Présioname ❤️'
   @Input() disabled = false;
+  @Input() backgroundColor: string = '#ff5f6d';
   hearts: string[] = [];
 
   onClick(): void {
