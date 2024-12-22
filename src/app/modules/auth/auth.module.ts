@@ -7,19 +7,21 @@ import {BunnyInputComponent} from "../../shared/bunny-input/bunny-input.componen
 import {ButtonComponent} from "../../shared/button/button.component";
 import {PopupComponent} from "../../shared/popup/popup.component";
 import {ImageRendererComponent} from "../../shared/image-renderer/image-renderer.component";
+import {LoaderComponent} from "../../shared/loader/loader.component";
 
 
 @NgModule({
   declarations: [
     LoginComponent
   ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    BunnyInputComponent,
-    ButtonComponent,
-    PopupComponent,
-    ImageRendererComponent
-  ]
+    imports: [
+        CommonModule,
+        AuthRoutingModule,
+        BunnyInputComponent,
+        ButtonComponent,
+        PopupComponent,
+        ImageRendererComponent,
+        LoaderComponent
+    ]
 })
 export class AuthModule { }

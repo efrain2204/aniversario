@@ -1,5 +1,5 @@
 <div class="button-container">
-  <button (click)="onClick()" class="heart-button">Présioname ❤️</button>
+  <button [disabled]="disabled" (click)="onClick()" class="heart-button" [ngClass]="{disabled}">{{label}}</button>
   <div class="hearts-container">
     <div *ngFor="let heart of hearts" class="heart">{{ heart }}</div>
   </div>

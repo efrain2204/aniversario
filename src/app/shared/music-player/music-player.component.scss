@@ -1,0 +1,36 @@
+.music-player {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  width: 80%;
+  height: auto;
+  padding: 10px 40px;
+
+  .song-title {
+    flex:2;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow:
+      -1px -1px 0 black,
+      1px -1px 0 black,
+      -1px  1px 0 black,
+      2px  2px 10px black; /* Borde negro */
+  }
+
+  .controls {
+    flex:1;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+
+    button {
+      background-color: #000;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+  }
+}

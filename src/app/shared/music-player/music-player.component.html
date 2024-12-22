@@ -1,0 +1,9 @@
+<div class="music-player">
+  <div class="song-title">{{ currentSong.title }}</div>
+  <div class="controls">
+    <button (click)="playPause()" class="play-pause-btn">
+      {{ isPlaying ? '||' : '▶' }}
+    </button>
+    <button (click)="nextSong()" class="next-btn">Sig</button>
+  </div>
+</div>

@@ -1,22 +1,52 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
+import {modelSimpleQuestion} from "../../../shared/popup/popup.component";
+import {ImageManager} from "../../../utils/ImageManager";
+import {Validators} from "../../../utils/Validators/Validators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit, OnDestroy{
 
-  input = new FormControl('');
-  openModalLogin  = false
+  gatosEsperandoIM = new ImageManager([
+    'https://media1.tenor.com/m/J2NId9AGVnMAAAAd/%EB%AA%A8%EC%B0%8C-%EB%AA%A8%EB%AA%A8%EC%B0%8C.gif',
+    'https://media1.tenor.com/m/giDNGgvic28AAAAd/hi-rawr.gif',
+    'https://media.tenor.com/rzbM238OZ7MAAAAi/mochi-cat-chibi-cat.gif',
+    'https://media.tenor.com/tdeVEqmiDBAAAAAi/cutie-cat.gif'
+  ])
 
-  constructor(private authService:AuthService) {
+  gatostristesIM = new ImageManager([
+    'https://media.tenor.com/vFojGfJgDbgAAAAi/rabbit-bunny.gif',
+    'https://media.tenor.com/YgxdehHpC1wAAAAi/very-miss-rabbit.gif',
+    'https://media1.tenor.com/m/VRL9uBdvLTMAAAAd/%D1%83%D1%85.gif'
+  ])
+
+  nIntentos = 0;
+  palabraControl = new FormControl('',[Validators.required]);
+  modalVerificarIntentos?: modelSimpleQuestion;
+  loaderImg: string | undefined;
+  intervalId: any;
+
+  constructor(
+    private authService:AuthService,
+    private router: Router) {
   }
 
   ngOnInit() {
-    setInterval(this.hearts,300)
+    this.intervalId = setInterval(() => {
+      this.hearts();
+    }, 300);
+  }
+  ngOnDestroy() {
+    // Limpiar el intervalo cuando el componente se destruye
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 
   hearts(){
@@ -48,8 +78,34 @@ export class LoginComponent implements OnInit{
     },3000)
   }
 
-  modal(){
-    this.openModalLogin = !this.openModalLogin;
+  verificarPalabra(){
+    this.nIntentos++
+    if(this.nIntentos === 10){
+      this.modalVerificarIntentos = {
+        question:'Creo que ta malogrado el boton je',
+        urlImg: this.gatostristesIM.getRandomImage(),
+        button1Text: 'Intentar de nuevo',
+        onButton1Click: () => {
+          if(this.modalVerificarIntentos){
+            this.modalVerificarIntentos.urlImg = this.gatosEsperandoIM.getRandomImage()
+            this.modalVerificarIntentos.button1Text = undefined
+            this.modalVerificarIntentos.question = `Estoy pensando si la palabra ${this.palabraControl.value ?? ''} es correcta!!`
+            this.validateWord(this.palabraControl.value?? '')
+          }
+
+        }
+      }
+    }
+
+  }
+
+  validateWord(value: string){
+    this.router.navigate(['/dashboard']);
+  }
+
+  closeModalVerificar(){
+    this.modalVerificarIntentos = undefined;
+    this.nIntentos = 0
   }
 
 }

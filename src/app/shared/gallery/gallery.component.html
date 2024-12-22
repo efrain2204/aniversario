@@ -1,0 +1,18 @@
+<div class="fullscreen-background">
+  <div class="gallery">
+    <h1>Nuestras historias!!</h1>
+    <div class="image-container" *ngFor="let image of displayedImages" (click)="openModal(image)">
+      <img [src]="image" alt="Image" class="gallery-image">
+    </div>
+    <img (click)="back()" src="../../../assets/svg/back.svg" width="50" height="50" alt="album" class="album">
+  </div>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <span id="close-btn" class="close-btn" (click)="closeModal()">X</span>
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <img id="modal-img" src="" alt="Modal Image">
+    </div>
+  </div>
+
+</div>

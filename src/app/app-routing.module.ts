@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {AuthModule} from "./modules/auth/auth.module";
 
 const routes: Routes = [
-  { path: '', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) }, // Ruta vacía carga el módulo Login
+  { path: '', loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) },
+  { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: '**', redirectTo: '' } // Redirige rutas desconocidas a la ruta vacía
 ];
 
