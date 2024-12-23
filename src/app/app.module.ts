@@ -12,7 +12,7 @@ import {MusicPlayerComponent} from "./shared/music-player/music-player.component
     imports: [
         BrowserModule,
         AppRoutingModule,
-        MusicPlayerComponent
+        MusicPlayerComponent,
     ],
   providers: [],
   bootstrap: [AppComponent]

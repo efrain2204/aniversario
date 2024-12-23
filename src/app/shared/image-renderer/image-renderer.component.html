@@ -1,4 +1,4 @@
 <div class="image-container">
-  <img [src]="imageUrl" [width]="width" [height]="height" alt="Image" class="responsive-image" *ngIf="imageUrl" />
+  <img [ngClass]="{'circle':circle}" [src]="imageUrl" [width]="width" [height]="height" alt="Image" class="responsive-image" *ngIf="imageUrl" />
   <p *ngIf="!imageUrl">No image available</p>
 </div>

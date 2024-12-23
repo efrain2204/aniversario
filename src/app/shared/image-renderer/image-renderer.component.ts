@@ -12,4 +12,5 @@ export class ImageRendererComponent {
   @Input() imageUrl: string = '';
   @Input() width: string = '100%'; // Ancho por defecto
   @Input() height: string = 'auto'; // Alto por defecto
+  @Input() circle: boolean = false;
 }
