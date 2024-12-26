@@ -8,9 +8,9 @@ import { timer } from 'rxjs';
 })
 export class PuzzleComponent {
   images = [
-    { name: 'Imagen 1', path: 'assets/images/foto1.jpg' },
-    { name: 'Imagen 2', path: 'assets/images/foto2.jpg' },
-    { name: 'Imagen 3', path: 'assets/images/foto3.jpg' }
+    { name: 'Imagen 1', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184324/assests/ozx9dfykk5w55bqx16lz.jpg' },
+    { name: 'Imagen 2', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184331/assests/ilquwoxz0jh93l5m6bdl.jpg' },
+    { name: 'Imagen 3', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184323/assests/vyxbb36aevamixzulatr.jpg' }
   ];
   gridOptions = [3, 4, 5]; // 3x3, 4x4, 5x5 grids
 

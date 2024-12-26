@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 
 export class AuthService {
-  private _allowAccess = false
+  private _allowAccess = true
 
   get allowAccess(): boolean {
     return this._allowAccess;

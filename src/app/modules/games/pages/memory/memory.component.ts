@@ -7,12 +7,12 @@ import { Component } from '@angular/core';
 })
 export class MemoryComponent {
   cards = [
-    { id: 1, image: 'assets/images/foto1.jpg' },
-    { id: 2, image: 'assets/images/foto2.jpg' },
-    { id: 3, image: 'assets/images/foto3.jpg' },
-    { id: 4, image: 'assets/images/foto4.jpg' },
-    { id: 5, image: 'assets/images/foto5.jpg' },
-    { id: 6, image: 'assets/images/foto6.jpg' },
+    { id: 1, image: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184320/assests/xuduwewottfclpxvqvgn.jpg' },
+    { id: 2, image: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184326/assests/vtzwrs06bluyckvgfcnm.jpg' },
+    { id: 3, image: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184328/assests/mccwtbmlyijguywppp4s.jpg' },
+    { id: 4, image: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184322/assests/k1w0p9w06vdafzmosnnk.jpg' },
+    { id: 5, image: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184320/assests/ak8f0uqniqipx3nvajke.jpg' },
+    { id: 6, image: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184318/assests/i2lj1eon4gqprbglcl9e.png' },
 
   ];
   shuffledCards = this.shuffle([...this.cards, ...this.cards]);

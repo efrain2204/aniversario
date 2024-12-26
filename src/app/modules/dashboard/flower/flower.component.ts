@@ -13,5 +13,7 @@ export class FlowerComponent {
   showAlbum(){
     this.router.navigate(['dashboard/gallery'])
   }
-
+  back(){
+    this.router.navigate(['/auth']);
+  }
 }
