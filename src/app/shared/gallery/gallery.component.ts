@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Router} from "@angular/router";
+import {ImageRendererComponent} from "../image-renderer/image-renderer.component";
 
 export interface imagesMessage {
   url: string;
@@ -10,7 +11,7 @@ export interface imagesMessage {
 @Component({
   selector: 'view-gallery',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ImageRendererComponent],
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
 })
@@ -55,6 +56,22 @@ export class ViewGalleryComponent implements OnInit {
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184320/assests/ak8f0uqniqipx3nvajke.jpg', message: "Chicos serios captados en camara ! je"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184318/assests/i2lj1eon4gqprbglcl9e.png', message: "Si Sofia fuera Efrain y viceversa en versión conejitos jejejeje"}
   ];
+
+  isLoading: boolean[] = [];
+
+  constructor() {
+    // Inicializa el estado de carga de cada imagen
+    this.isLoading = this.displayedImages.map(() => true);
+  }
+
+  onImageLoad(index: number): void {
+    this.isLoading[index] = false; // Oculta el cuadro de carga cuando la imagen se carga
+  }
+
+  onImageError(index: number): void {
+    console.error(`Error al cargar la imagen en el índice ${index}`);
+    this.isLoading[index] = false; // Oculta el cuadro de carga incluso si hay un error
+  }
 
   ngOnInit() {
   }
