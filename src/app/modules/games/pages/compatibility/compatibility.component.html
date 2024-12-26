@@ -1,0 +1,16 @@
+<div class="juego-container">
+  <div class="pregunta-container">
+    <h2>{{ preguntaActual.pregunta }}</h2>
+    <div class="respuestas">
+      <button *ngFor="let respuesta of preguntaActual.respuestas"
+              (click)="responder(respuesta)">
+        {{ respuesta }}
+      </button>
+    </div>
+  </div>
+
+  <div class="compatibilidad">
+    <h3>Compatibilidad: {{ compatibilidad }}%</h3>
+    <div class="barra" [style.width]="compatibilidad + '%'"></div>
+  </div>
+</div>

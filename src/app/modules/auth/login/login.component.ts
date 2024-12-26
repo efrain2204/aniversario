@@ -150,6 +150,7 @@ export class LoginComponent implements OnInit, OnDestroy{
         if(this.modalVerificarIntentos){
           this.modalVerificarIntentos.urlImg = this.animalesFelicesIM.getRandomImage();
           this.modalVerificarIntentos.question = `Esta palabra -> ${this.palabraControl.value ?? ''} es la correcta!!`
+          this.authService.allowAccess = true;
         }
         setTimeout(()=>{
           this.router.navigate(['/dashboard']);
@@ -175,7 +176,7 @@ export class LoginComponent implements OnInit, OnDestroy{
       urlImg: this.gatosJugandoIM.getRandomImage(),
       button1Text: 'Vamos a jugar!',
       onButton1Click: () => {
-        this.router.navigate(['/dashboard-games']);
+        this.router.navigate(['/games']);
       }
     }
   }

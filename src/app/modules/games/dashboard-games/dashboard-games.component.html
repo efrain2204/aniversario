@@ -1,11 +1,15 @@
 <div class="container-games">
   <h1>Lista de juegos</h1>
   <div class="list-games">
-    <span>Trivias</span>
-    <span>Juego de memoria</span>
-    <span>Atrapa corazones</span>
-    <span>Rompecabezas</span>
+    <span routerLink="/games/trivia">Trivias</span>
+    <span routerLink="/games/memory">Juego de memoria</span>
+    <span routerLink="/games/hearHunter">Atrapa corazones</span>
+    <span routerLink="/games/dados">Dados</span>
+    <span routerLink="/games/puzzle">Puzzle</span>
+    <span routerLink="/games/roulette">Ruleta</span>
+    <span routerLink="/games/compatibility">Compatibilidad</span>
   </div>
-  <div>
-  </div>
+</div>
+<div>
+  <router-outlet></router-outlet>
 </div>

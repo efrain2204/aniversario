@@ -1,0 +1,61 @@
+/* juego.component.css */
+.juego-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  padding: 20px;
+}
+
+.pregunta-container {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #ff6f61;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  width: 80%;
+}
+
+button:hover {
+  background-color: #ff4a3a;
+}
+
+.compatibilidad {
+  margin-top: 40px;
+  font-size: 1.2rem;
+}
+
+.barra {
+  background-color: #ff6f61;
+  height: 20px;
+  border-radius: 5px;
+  transition: width 0.3s ease-in-out;
+  width: 0;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 8px 12px;
+    width: 90%;
+  }
+}

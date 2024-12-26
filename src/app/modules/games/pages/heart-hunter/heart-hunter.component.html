@@ -1,0 +1,14 @@
+<div class="heart-hunter-container">
+  <timer [time]="60" (timeUp)="endGame()"></timer>
+  <div class="game-area">
+    <div
+      *ngFor="let emoji of emojis; index as i"
+      [style.top.px]="emoji.top"
+      [style.left.px]="emoji.left"
+      class="emoji"
+      (click)="onEmojiClick(i, emoji)">
+      {{ emoji.char }}
+    </div>
+  </div>
+  <p>Puntaje: {{ score }}</p>
+</div>

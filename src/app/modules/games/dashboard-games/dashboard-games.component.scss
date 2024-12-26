@@ -4,13 +4,12 @@
 .list-games{
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   span{
     display: inline-block;
-    padding: 10px 20px;
+    padding: 5px 10px;
     background-color: #4caf50; /* Color de fondo */
     color: white; /* Color del texto */
-    font-size: 16px; /* Tamaño del texto */
     font-weight: bold;
     text-align: center;
     border-radius: 5px; /* Bordes redondeados */

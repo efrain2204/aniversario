@@ -1,0 +1,41 @@
+<div class="game-container">
+  <h1>Rompecabezas Interactivo</h1>
+
+  <div class="image-selection">
+    <label for="image-select">Elige una imagen:</label>
+    <select id="image-select" [(ngModel)]="selectedImage" (change)="loadPuzzle()">
+      <option *ngFor="let image of images" [value]="image.path">{{ image.name }}</option>
+    </select>
+  </div>
+
+  <div class="grid-selection">
+    <label for="grid-size">Selecciona el número de cuadrículas:</label>
+    <select id="grid-size" [(ngModel)]="gridSize" (change)="loadPuzzle()">
+      <option *ngFor="let size of gridOptions" [value]="size">{{ size }}x{{ size }}</option>
+    </select>
+  </div>
+
+  <div *ngIf="selectedImage" class="puzzle-container">
+    <div class="puzzle-grid" [ngStyle]="{ 'grid-template-columns': 'repeat(' + gridSize + ', 1fr)' }">
+      <div
+        *ngFor="let piece of puzzlePieces; let i = index"
+        class="puzzle-piece"
+        [ngStyle]="getPieceStyle(i)"
+        (click)="selectPiece(i)">
+        <img [src]="piece.image" alt="Puzzle piece" />
+        <span *ngIf="piece.selected">{{ piece.order }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="timer-score">
+    <p>Intentos: {{ attempts }}</p>
+  </div>
+
+  <button (click)="verifyPuzzle()" *ngIf="puzzlePieces.length">Verificar</button>
+  <button (click)="resetGame()">Reiniciar</button>
+
+  <div *ngIf="puzzleSolved" class="result">
+    <p>¡Felicidades! Has resuelto el rompecabezas correctamente.</p>
+  </div>
+</div>

@@ -5,7 +5,15 @@ import { Injectable } from '@angular/core';
 })
 
 export class AuthService {
-  allowAccess = false
+  private _allowAccess = false
+
+  get allowAccess(): boolean {
+    return this._allowAccess;
+  }
+
+  set allowAccess(value: boolean) {
+    this._allowAccess = value;
+  }
 
   constructor() { }
 }

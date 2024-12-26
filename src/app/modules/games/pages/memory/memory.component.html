@@ -1,0 +1,12 @@
+<div class="memory-container">
+  <timer [time]="60" (timeUp)="onTimeUp()"></timer>
+  <div class="grid">
+    <card-memory
+      *ngFor="let card of shuffledCards; index as i"
+      [card]="card"
+      [flipped]="flippedCards.includes(i) || matchedCards.includes(card.id)"
+      (cardClicked)="onCardClicked(i)">
+    </card-memory>
+  </div>
+  <p>Puntaje: {{ score }}</p>
+</div>

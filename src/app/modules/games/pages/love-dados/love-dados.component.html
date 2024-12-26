@@ -1,0 +1,29 @@
+<div class="dice-game-container">
+  <h1>Dados del Amor</h1>
+  <div class="dice-area">
+    <div class="dice-container">
+      <div class="dice" [class.rolling]="isRolling">
+        <div class="face front">{{ actionDice }}</div>
+        <div class="face back"></div>
+        <div class="face left"></div>
+        <div class="face right"></div>
+        <div class="face top"></div>
+        <div class="face bottom"></div>
+      </div>
+    </div>
+    <div class="dice-container">
+      <div class="dice" [class.rolling]="isRolling">
+        <div class="face front">{{ placeDice }}</div>
+        <div class="face back"></div>
+        <div class="face left"></div>
+        <div class="face right"></div>
+        <div class="face top"></div>
+        <div class="face bottom"></div>
+      </div>
+    </div>
+  </div>
+  <button (click)="rollDice()">Lanzar Dados</button>
+  <p class="result" *ngIf="!isRolling && actionDice && placeDice">
+    ¡{{ actionDice }} en {{ placeDice }}!
+  </p>
+</div>
