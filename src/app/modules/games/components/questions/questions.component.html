@@ -1,5 +1,5 @@
 <div class="question">
-  <h2>{{ question.text }}</h2>
+  <h2>{{order}}.- {{ question.text }}</h2>
   <div class="options">
     <button *ngFor="let option of question.options" (click)="selectAnswer(option)">
       {{ option }}

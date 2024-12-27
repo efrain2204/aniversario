@@ -8,5 +8,8 @@
       (cardClicked)="onCardClicked(i)">
     </card-memory>
   </div>
-  <p>Puntaje: {{ score }}</p>
+  <score-table
+    [scoreGlobal]="coreGame.bestScoreMemory"
+    [scoreLocal]="score"
+  ></score-table>
 </div>

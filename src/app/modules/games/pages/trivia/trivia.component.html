@@ -1,8 +1,14 @@
 <div class="container">
-  <timer [time]="30" (timeUp)="onTimeUp()"></timer>
+  <timer [time]="100" (timeUp)="onTimeUp()"></timer>
   <questions
-    [question]="questions[currentQuestion]"
+    [question]="questionsFinal[currentQuestion]"
+    [order]="currentQuestion+1"
     (answerSelected)="onAnswerSelected($event)">
   </questions>
-  <p>Puntaje: {{ coreGame.triviaScore }}</p>
+
+  <score-table
+    [scoreLocal]="puntajeLocal"
+    [scoreGlobal]="gameCore.bestScoreTrivia"
+  ></score-table>
+
 </div>

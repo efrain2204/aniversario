@@ -1,15 +1,19 @@
-<div class="container-games">
-  <h1>Lista de juegos</h1>
-  <div class="list-games">
-    <span routerLink="/games/trivia">Trivias</span>
-    <span routerLink="/games/memory">Juego de memoria</span>
-    <span routerLink="/games/hearHunter">Atrapa corazones</span>
-    <span routerLink="/games/dados">Dados</span>
-    <span routerLink="/games/puzzle">Puzzle</span>
-    <span routerLink="/games/roulette">Ruleta</span>
-    <span routerLink="/games/compatibility">Compatibilidad</span>
+<div class="bg">
+  <div class="container-games">
+    <div class="container-title">
+      <h1>Lista de juegos</h1>
+      <app-button backgroundColor="#000" *ngIf="coreGame.allowEnter()" label="Ya puedes ingresar!"></app-button>
+    </div>
+    <div class="list-games">
+      <span routerLink="/games/trivia">Trivias</span>
+      <span routerLink="/games/memory">Juego de memoria</span>
+      <span routerLink="/games/hearHunter">Atrapa corazones</span>
+      <span routerLink="/games/dados">Dados</span>
+      <span routerLink="/games/puzzle">Puzzle</span>
+      <span routerLink="/games/roulette">Ruleta</span>
+      <span routerLink="/games/compatibility">Compatibilidad</span>
+    </div>
+    <router-outlet></router-outlet>
+
   </div>
-</div>
-<div>
-  <router-outlet></router-outlet>
 </div>

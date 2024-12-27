@@ -1,5 +1,20 @@
+.bg{
+  background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
+  width: 100%;
+  min-height: 100vh;
+}
 .container-games{
   padding: 50px 20px 25px 20px;
+  .container-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1{
+      color: #ffffff;
+      font-size: 1.5rem;
+    }
+  }
+
 }
 .list-games{
   display: flex;
@@ -8,8 +23,9 @@
   span{
     display: inline-block;
     padding: 5px 10px;
-    background-color: #4caf50; /* Color de fondo */
-    color: white; /* Color del texto */
+    background-color: #f48fb1; /* Rosa pastel */
+    color: #ffffff; /* Texto blanco */
+
     font-weight: bold;
     text-align: center;
     border-radius: 5px; /* Bordes redondeados */
@@ -17,14 +33,14 @@
     cursor: pointer;
     transition: all 0.3s ease;
     &:hover {
-      background-color: #45a049; /* Cambiar color */
-      border-color: #2e7d32; /* Cambiar borde */
+      background-color: #e76792; /* Cambiar color */
+      border-color: #67112f; /* Cambiar borde */
       transform: scale(1.05); /* Aumentar tamaño */
     }
 
     /* Efectos al presionar */
     &:active {
-      background-color: #388e3c;
+      background-color: #e76792;
       transform: scale(0.95);
     }
   }

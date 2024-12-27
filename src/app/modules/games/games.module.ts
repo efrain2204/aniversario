@@ -16,6 +16,8 @@ import { PuzzleComponent } from './pages/puzzle/puzzle.component';
 import {FormsModule} from "@angular/forms";
 import { RouletteComponent } from './pages/roulette/roulette.component';
 import { CompatibilityComponent } from './pages/compatibility/compatibility.component';
+import {ButtonComponent} from "../../shared/button/button.component";
+import { ScoreTableComponent } from './components/score-table/score-table.component';
 
 
 @NgModule({
@@ -31,13 +33,15 @@ import { CompatibilityComponent } from './pages/compatibility/compatibility.comp
     LoveDadosComponent,
     PuzzleComponent,
     RouletteComponent,
-    CompatibilityComponent
+    CompatibilityComponent,
+    ScoreTableComponent
   ],
-  imports: [
-    CommonModule,
-    GamesRoutingModule,
-    RouterModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        GamesRoutingModule,
+        RouterModule,
+        FormsModule,
+        ButtonComponent
+    ]
 })
 export class GamesModule { }

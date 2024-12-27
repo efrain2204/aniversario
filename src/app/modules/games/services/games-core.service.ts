@@ -5,20 +5,18 @@ import { Injectable } from '@angular/core';
 })
 export class GamesCoreService {
 
-  private _triviaScore = 0;
+  bestScoreTrivia = 0; //max 100
+  bestScoreMemory = 0; //max 90
+  bestScoreHunterHeart = 0; //max xx
 
-
-  get triviaScore(): number {
-    return this._triviaScore;
-  }
-
-  set triviaScore(value: number) {
-    this._triviaScore = value;
-  }
+  backRouter = ''
+  scoreToShow = 0;
 
   constructor() { }
 
-  resetTriviaScore() {
-    this._triviaScore = 0;
+
+  allowEnter(){
+    // return (this.bestScoreTrivia >= 80) &&(this.bestScoreMemory>=70)
+    return true;
   }
 }

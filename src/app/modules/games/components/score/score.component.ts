@@ -8,10 +8,8 @@ import {GamesCoreService} from "../../services/games-core.service";
 })
 export class ScoreComponent {
 
-  constructor(public coreGame: GamesCoreService) {
-  }
-
-  resetScore() {
-    this.coreGame.resetTriviaScore()
+  constructor(
+    public coreGame: GamesCoreService
+  ) {
   }
 }

@@ -1,5 +1,7 @@
-<div class="score">
-  <h1>¡Juego Terminado!</h1>
-  <p>Tu puntaje final es: {{ coreGame.triviaScore }}</p>
-  <button routerLink="/games/trivia" (click)="resetScore()">Volver a jugar</button>
+<div class="score-container">
+  <div class="score">
+    <h1>¡Juego Terminado!</h1>
+    <p>Tu puntaje final es: {{ coreGame.scoreToShow }}</p>
+    <app-button [routerLink]="this.coreGame.backRouter" label="Volver a jugar"></app-button>
+  </div>
 </div>

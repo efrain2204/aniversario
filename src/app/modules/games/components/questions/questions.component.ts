@@ -7,6 +7,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class QuestionsComponent {
   @Input() question!: { text: string; options: string[]; answer: string };
+  @Input() order: number = 0
   @Output() answerSelected = new EventEmitter<boolean>();
 
   selectAnswer(option: string) {

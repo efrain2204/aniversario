@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {GamesCoreService} from "../services/games-core.service";
 
 @Component({
   selector: 'app-dashboard-games',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard-games.component.scss']
 })
 export class DashboardGamesComponent {
+
+  constructor(public coreGame:GamesCoreService) {
+  }
 
 }

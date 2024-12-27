@@ -1,0 +1,14 @@
+.score-container{
+  display: flex;
+  justify-content: center;
+}
+.score{
+  flex-direction: column;
+  display: flex;
+  width: 200px;
+  align-items: center;
+  margin-top: 50px;
+  padding: 20px;
+  background: pink;
+  border-radius: 20px;
+}

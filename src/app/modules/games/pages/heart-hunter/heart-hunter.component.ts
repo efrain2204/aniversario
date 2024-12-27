@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {GamesCoreService} from "../../services/games-core.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-heart-hunter',
   templateUrl: './heart-hunter.component.html',
   styleUrls: ['./heart-hunter.component.scss']
 })
-export class HeartHunterComponent {
+export class HeartHunterComponent implements OnInit {
   score = 0;
   emojis: { char: string; top: number; left: number; duration: number }[] = [];
   interval!: any;
+
+  constructor(public gameCore: GamesCoreService, private router: Router) {
+  }
 
   ngOnInit() {
     this.startGame();
