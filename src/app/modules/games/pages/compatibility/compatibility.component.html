@@ -8,9 +8,8 @@
       </button>
     </div>
   </div>
-
   <div class="compatibilidad">
     <h3>Compatibilidad: {{ compatibilidad }}%</h3>
-    <div class="barra" [style.width]="compatibilidad + '%'"></div>
+    <app-compatibility-bar [imgUrl]="urlGatitos" [compatibility]="compatibilidad" [showImg]="true"></app-compatibility-bar>
   </div>
 </div>

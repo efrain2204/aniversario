@@ -14,4 +14,12 @@ export class FinalComponent {
     this.router.navigate(['auth'])
   }
 
+  descargarpdf(){
+    const pdfUrl = 'assets/pdf/amor.pdf'; // Ruta del archivo en assets
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'miarchivo.pdf';  // Nombre del archivo descargado
+    link.click();
+  }
+
 }

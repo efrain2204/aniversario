@@ -1,0 +1,12 @@
+.cb-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem ;
+}
+.barra {
+  background-color: #ff6f61;
+  height: 20px;
+  border-radius: 5px;
+  transition: width 0.3s ease-in-out;
+  width: 0;
+}

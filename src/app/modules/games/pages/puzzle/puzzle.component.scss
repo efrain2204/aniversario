@@ -42,7 +42,8 @@
 .puzzle-piece span {
   position: absolute;
   font-size: 1.5rem;
-  color: white;
+  color: black;
+  text-shadow: 0px 0px 10px #fff;
   font-weight: bold;
   top: 5px;
   right: 5px;

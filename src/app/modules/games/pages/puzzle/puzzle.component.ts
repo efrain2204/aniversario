@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { timer } from 'rxjs';
+import {GamesCoreService} from "../../services/games-core.service";
 
 @Component({
   selector: 'app-puzzle',
@@ -10,7 +11,9 @@ export class PuzzleComponent {
   images = [
     { name: 'Imagen 1', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184324/assests/ozx9dfykk5w55bqx16lz.jpg' },
     { name: 'Imagen 2', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184331/assests/ilquwoxz0jh93l5m6bdl.jpg' },
-    { name: 'Imagen 3', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184323/assests/vyxbb36aevamixzulatr.jpg' }
+    { name: 'Imagen 3', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184323/assests/vyxbb36aevamixzulatr.jpg' },
+    { name: 'Imagen 4', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184334/assests/bqwhcbsdzt4aoyqjnxlx.jpg' },
+    { name: 'Imagen 5', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1656358280/samples/landscapes/nature-mountains.jpg'}
   ];
   gridOptions = [3, 4, 5]; // 3x3, 4x4, 5x5 grids
 
@@ -19,6 +22,9 @@ export class PuzzleComponent {
   puzzlePieces: any[] = [];
   attempts: number = 0;
   puzzleSolved: boolean = false;
+
+  constructor(private gameCore:GamesCoreService) {
+  }
 
   loadPuzzle() {
     if (!this.selectedImage) return;
@@ -30,6 +36,7 @@ export class PuzzleComponent {
   createPuzzle() {
     this.puzzlePieces = [];
     const image = new Image();
+    image.crossOrigin = "anonymous";
     image.src = this.selectedImage;
     image.onload = () => {
       const pieceWidth = image.width / this.gridSize;
@@ -42,6 +49,7 @@ export class PuzzleComponent {
             row: row,
             col: col,
             order: order,
+            orderSelected: 0,
             selected: false,
             image: this.cutImage(image, col * pieceWidth, row * pieceHeight, pieceWidth, pieceHeight)
           };
@@ -49,7 +57,6 @@ export class PuzzleComponent {
           order++;
         }
       }
-
       // Desordenar las piezas
       this.shufflePieces();
     };
@@ -86,7 +93,8 @@ export class PuzzleComponent {
 
     // Asignar el número de orden
     selectedPiece.selected = true;
-    selectedPiece.order = this.attempts + 1;
+    selectedPiece.orderSelected = this.attempts + 1
+    console.log(selectedPiece);
     this.attempts++;
 
     // Si alcanzó el número total de intentos, permite verificar
@@ -98,16 +106,18 @@ export class PuzzleComponent {
   verifyPuzzle() {
     this.puzzleSolved = true;
     for (let i = 0; i < this.puzzlePieces.length; i++) {
-      const piece = this.puzzlePieces[i];
-      if (piece.order !== i + 1) {
+      const piece = this.puzzlePieces[i]
+      if (Number(piece.order) !== Number(piece.orderSelected)) {
         this.puzzleSolved = false;
         break;
       }
     }
 
     if (this.puzzleSolved) {
+      this.gameCore.allowPuzzle = true;
       alert("¡Felicidades! Has resuelto el rompecabezas correctamente.");
     } else {
+      this.gameCore.allowPuzzle = false;
       alert("¡Ups! La secuencia no es correcta. Inténtalo de nuevo.");
     }
   }

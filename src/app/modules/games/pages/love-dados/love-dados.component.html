@@ -26,4 +26,6 @@
   <p class="result" *ngIf="!isRolling && actionDice && placeDice">
     ¡{{ actionDice }} en {{ placeDice }}!
   </p>
+  <bunny-input [control]="wordMagic"></bunny-input>
+  <app-button (click)="passDados()" label="Verificar palabra de control!"></app-button>
 </div>

@@ -18,6 +18,9 @@ import { RouletteComponent } from './pages/roulette/roulette.component';
 import { CompatibilityComponent } from './pages/compatibility/compatibility.component';
 import {ButtonComponent} from "../../shared/button/button.component";
 import { ScoreTableComponent } from './components/score-table/score-table.component';
+import {BunnyInputComponent} from "../../shared/bunny-input/bunny-input.component";
+import { CompatibilityBarComponent } from './components/compatibility-bar/compatibility-bar.component';
+import {ImageRendererComponent} from "../../shared/image-renderer/image-renderer.component";
 
 
 @NgModule({
@@ -34,14 +37,17 @@ import { ScoreTableComponent } from './components/score-table/score-table.compon
     PuzzleComponent,
     RouletteComponent,
     CompatibilityComponent,
-    ScoreTableComponent
+    ScoreTableComponent,
+    CompatibilityBarComponent
   ],
-    imports: [
-        CommonModule,
-        GamesRoutingModule,
-        RouterModule,
-        FormsModule,
-        ButtonComponent
-    ]
+  imports: [
+    CommonModule,
+    GamesRoutingModule,
+    RouterModule,
+    FormsModule,
+    ButtonComponent,
+    BunnyInputComponent,
+    ImageRendererComponent
+  ]
 })
 export class GamesModule { }

@@ -4,11 +4,12 @@
   align-items: center;
   font-family: Arial, sans-serif;
   padding: 20px;
+  gap: 20px;
 }
 
 .dice-area {
   display: flex;
-  gap: 20px;
+  gap: 50px;
   margin: 20px 0;
 }
 
@@ -33,9 +34,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
   font-weight: bold;
   backface-visibility: hidden;
+  word-break: break-word;
 }
 
 .front {
@@ -102,6 +103,7 @@ button:hover {
   margin-top: 20px;
   font-size: 1.4rem;
   color: #ff6584;
+  text-align: center;
 }
 
 @media (max-width: 600px) {

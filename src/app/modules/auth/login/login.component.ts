@@ -5,6 +5,7 @@ import {modelSimpleQuestion} from "../../../shared/popup/popup.component";
 import {ImageManager} from "../../../utils/ImageManager";
 import {Validators} from "../../../utils/Validators/Validators";
 import {Router} from "@angular/router";
+import {GamesCoreService} from "../../games/services/games-core.service";
 
 @Component({
   selector: 'app-login',
@@ -78,10 +79,13 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   constructor(
     private authService:AuthService,
-    private router: Router) {
+    private router: Router,
+    private gameCore:GamesCoreService) {
   }
 
   ngOnInit() {
+    this.authService.allowAccess = false;
+    this.gameCore.resetValues()
     this.intervalId = setInterval(() => {
       this.hearts();
     }, 300);

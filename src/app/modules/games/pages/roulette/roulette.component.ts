@@ -1,34 +1,26 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {FormControl} from "@angular/forms";
+import {GamesCoreService} from "../../services/games-core.service";
 
 @Component({
   selector: 'app-roulette',
   templateUrl: './roulette.component.html',
   styleUrls: ['./roulette.component.scss']
 })
-export class RouletteComponent {
+export class RouletteComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas') canvasRef?: ElementRef<HTMLCanvasElement>;
   ctx: CanvasRenderingContext2D | null = null;
   options = [
-    '$100',
-    '$10',
-    '$25',
-    '$250',
-    '$30',
-    '$1000',
-    '$1',
-    '$200',
-    '$45',
-    '$500',
-    '$5',
-    '$20',
-    'Lose',
-    '$1000000',
-    'Lose',
-    '$350',
-    '$5',
-    '$99',
+    'Nalgadazo',
+    'arrimon',
+    '30 sentadillas',
+    '30 planchas',
+    'voltereta',
+    'WIN',
+    'mortal',
+    'Nada',
+    "tomate mx"
   ];
-  // options = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i));
   startAngle = 0;
   arc = Math.PI / (this.options.length / 2);
   spinTime = 0;
@@ -38,7 +30,8 @@ export class RouletteComponent {
   selected = '';
   size = 320;
 
-  constructor() {}
+  constructor( private coreGame:GamesCoreService) {}
+
   ngAfterViewInit(): void {
     this.drawRouletteWheel();
   }
@@ -222,10 +215,11 @@ export class RouletteComponent {
       this.ctx.fillText(
         text,
         this.size / 2 - this.ctx.measureText(text).width / 2,
-        this.size / 2 + 10
+        this.size / 2 + 150
       );
       this.ctx.restore();
     }
+    this.coreGame.allowRoulette = this.selected === 'WIN';
   }
 
   easeOut(t: number, b: number, c: number, d: number) {
@@ -233,4 +227,5 @@ export class RouletteComponent {
     var tc = ts * t;
     return b + c * (tc + -3 * ts + 3 * t);
   }
+
 }

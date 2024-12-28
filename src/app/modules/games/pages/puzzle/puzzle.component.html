@@ -28,10 +28,6 @@
     </div>
   </div>
 
-  <div class="timer-score">
-    <p>Intentos: {{ attempts }}</p>
-  </div>
-
   <button (click)="verifyPuzzle()" *ngIf="puzzlePieces.length">Verificar</button>
   <button (click)="resetGame()">Reiniciar</button>
 

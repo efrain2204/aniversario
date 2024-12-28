@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {FormControl} from "@angular/forms";
+import {GamesCoreService} from "../../services/games-core.service";
 
 @Component({
   selector: 'app-love-dados',
@@ -78,6 +80,10 @@ export class LoveDadosComponent {
   actionDice: string = '';
   placeDice: string = '';
   isRolling: boolean = false;
+  wordMagic = new FormControl('')
+
+  constructor(private gameCore: GamesCoreService) {
+  }
 
   rollDice() {
     this.isRolling = true;
@@ -87,5 +93,13 @@ export class LoveDadosComponent {
       this.placeDice = this.places[Math.floor(Math.random() * this.places.length)];
       this.isRolling = false;
     }, 1000); // Duración de la animación 1 segundo
+  }
+
+  passDados() {
+    if (this.wordMagic.value === 'efrain2204') {
+      this.gameCore.allowDados = true;
+    } else {
+      alert("Palabra incorrecta!")
+    }
   }
 }

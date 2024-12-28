@@ -2,7 +2,11 @@
   <div class="container-games">
     <div class="container-title">
       <h1>Lista de juegos</h1>
-      <app-button backgroundColor="#000" *ngIf="coreGame.allowEnter()" label="Ya puedes ingresar!"></app-button>
+      <app-button
+        (click)="redirectPage()"
+        backgroundColor="#000"
+        *ngIf="coreGame.allowEnterButton()"
+        label="Ya puedes ingresar!"></app-button>
     </div>
     <div class="list-games">
       <span routerLink="/games/trivia">Trivias</span>
@@ -14,6 +18,6 @@
       <span routerLink="/games/compatibility">Compatibilidad</span>
     </div>
     <router-outlet></router-outlet>
-
+    <img (click)="back()" src="https://res.cloudinary.com/dzydl81rq/image/upload/v1735183872/assests/dcyqmki7er1t9n1oykdm.svg" width="50" height="50" alt="album" class="back">
   </div>
 </div>

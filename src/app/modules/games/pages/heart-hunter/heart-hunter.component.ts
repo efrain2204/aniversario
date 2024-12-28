@@ -55,7 +55,11 @@ export class HeartHunterComponent implements OnInit {
 
   endGame() {
     clearInterval(this.interval);
-    localStorage.setItem('score', String(this.score));
-    window.location.href = '/score';
+    if(this.score>= this.gameCore.bestScoreHunterHeart){
+      this.gameCore.bestScoreHunterHeart = this.score
+    }
+    this.gameCore.scoreToShow = this.score
+    this.gameCore.backRouter = '/games/hearHunter'
+    this.router.navigate(['games/score']);
   }
 }

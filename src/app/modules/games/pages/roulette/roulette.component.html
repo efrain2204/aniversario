@@ -1,3 +1,4 @@
-<p>Selected: {{ selected }}</p>
-<input type="button" value="spin" id="spin" (click)="spin()" />
-<canvas #canvas id="canvas" [width]="size" [height]="size"></canvas>
+<div class="roulette-container">
+  <app-button id="spin" (click)="spin()" label="Girar!"></app-button>
+  <canvas #canvas id="canvas" [width]="size" [height]="size"></canvas>
+</div>

@@ -1,0 +1,6 @@
+<div class="cb-container">
+  <div class="barra" [style.width]="compatibility + '%'"></div>
+  <div style="width: 100px" *ngIf="showImg">
+    <app-image-renderer [imageUrl]="imgUrl"></app-image-renderer>
+  </div>
+</div>

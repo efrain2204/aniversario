@@ -54,7 +54,8 @@ export class ViewGalleryComponent implements OnInit {
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184322/assests/k1w0p9w06vdafzmosnnk.jpg', message: "Nuestro viaje a Cuzco, solo puedo repetir en mi mente: 'Mi corazón solo conoce un idioma: el de amarte sin límites'"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184319/assests/drt7n9jbnmgeg5kzcnah.jpg',message: "El chuyo que se perdio, pipipi lo extrañaremos muchoooo!"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184320/assests/ak8f0uqniqipx3nvajke.jpg', message: "Chicos serios captados en camara ! je"},
-    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184318/assests/i2lj1eon4gqprbglcl9e.png', message: "Si Sofia fuera Efrain y viceversa en versión conejitos jejejeje"}
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184318/assests/i2lj1eon4gqprbglcl9e.png', message: "Si Sofia fuera Efrain y viceversa en versión conejitos jejejeje"},
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735408959/vbjeebf9sougqaafog9v.jpg', message: "Nuestra maraton!!! <3"},
   ];
 
   isLoading: boolean[] = [];
