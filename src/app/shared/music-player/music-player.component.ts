@@ -48,7 +48,8 @@ export class MusicPlayerComponent implements OnInit{
 
     // Cambiar a la siguiente canción
     this.currentSongIndex = (this.currentSongIndex + 1) % this.songs.length;
-    this.audio = new Audio(this.songs[this.currentSongIndex].url);
+    // this.audio = new Audio(this.songs[this.currentSongIndex].url);
+    this.loadSong()
 
     // Reproducir la nueva canción si estaba en reproducción
     if (this.isPlaying) {
