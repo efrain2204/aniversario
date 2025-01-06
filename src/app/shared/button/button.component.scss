@@ -58,13 +58,13 @@
   }
 }
 button.disabled {
-  background-color: #dcdcdc;  /* Gris cuando está deshabilitado */
+  background-color: #dcdcdc!important;  /* Gris cuando está deshabilitado */
   color: #a0a0a0;  /* Gris claro para el texto */
   cursor: not-allowed;  /* Cursor de no permitido */
 }
 
 button:disabled {
-  background-color: #dcdcdc;
+  background-color: #dcdcdc!important;;
   color: #a0a0a0;
   cursor: not-allowed;
 }

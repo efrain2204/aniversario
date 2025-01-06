@@ -12,6 +12,8 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
 export class BunnyInputComponent {
 
   @Input() control!: FormControl;
+  @Input() showIcon: boolean = true;
+  @Input() placeHolder = 'Escribe aquí...';
 
   private bunnySounds: string[] = [
     'assets/sounds/hit/hit.wav',

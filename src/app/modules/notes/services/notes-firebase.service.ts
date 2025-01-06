@@ -17,8 +17,9 @@ export class NotesFirebaseService {
     }) as Observable<TodoInterface[]>;
   }
 
-  addTodo(text: string): Observable<string> {
-    const todoToCreate = { text, isCompleted: false };
+  addTodo(title:string,text: string): Observable<string> {
+    const currentDate = new Date();
+    const todoToCreate = { title, text, isCompleted: false,time:currentDate.toISOString() };
     const promise = addDoc(this.todosCollection, todoToCreate).then(
       (response) => response.id
     );

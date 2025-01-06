@@ -1,18 +1,25 @@
-<section class="main" [ngClass]="{ hidden: noTodosClass() }">
-  <input
-    id="toggle-all"
-    class="toggle-all"
-    type="checkbox"
-    [checked]="isAllTodosSelected()"
-    (change)="toggleAllTodos($event)"
-  />
-  <label for="toggle-all">Mark all as completed</label>
-  <ul class="todo-list">
+<!--<section class="main" [ngClass]="{ hidden: noTodosClass() }">-->
+<!--  <input-->
+<!--    id="toggle-all"-->
+<!--    class="toggle-all"-->
+<!--    type="checkbox"-->
+<!--    [checked]="isAllTodosSelected()"-->
+<!--    (change)="toggleAllTodos($event)"-->
+<!--  />-->
+<!--  <label for="toggle-all">Mark all as completed</label>-->
+<!--</section>-->
+
+<ng-container *ngIf="noTodosClass();else Elements">
+  <empty></empty>
+</ng-container>
+
+<ng-template #Elements>
+  <div class="container-notes">
     <app-notes-atomic
       *ngFor="let todo of visibleTodos()"
       [todo]="todo"
       [isEditing]="editingId === todo.id"
       (setEditingId)="setEditingId($event)"
     ></app-notes-atomic>
-  </ul>
-</section>
+  </div>
+</ng-template>

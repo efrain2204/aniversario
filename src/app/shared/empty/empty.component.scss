@@ -1,0 +1,41 @@
+
+.no-items-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #555;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.no-items-message .icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+  animation: bounce 1.5s infinite;
+}
+
+.no-items-message h2 {
+  font-size: 24px;
+  margin: 0;
+  color: #333;
+}
+
+.no-items-message p {
+  font-size: 16px;
+  margin: 5px 0 0;
+  color: #777;
+}
+
+/* Animación de rebote para el ícono */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

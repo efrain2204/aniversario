@@ -3,6 +3,8 @@ import {Injectable, signal} from '@angular/core';
 export interface TodoInterface {
   id: string;
   text: string;
+  title: string;
+  time: string;
   isCompleted: boolean;
 }
 
@@ -25,10 +27,13 @@ export class NotesService {
     this.filterSig.set(filterName);
   }
 
-  addTodo(text: string, id: string): void {
+  addTodo(title:string, text: string, id: string): void {
+    const currentDate = new Date();
     const newTodo: TodoInterface = {
       text,
+      title,
       isCompleted: false,
+      time:currentDate.toISOString(),
       id,
     };
     this.todosSig.update((todos) => [...todos, newTodo]);

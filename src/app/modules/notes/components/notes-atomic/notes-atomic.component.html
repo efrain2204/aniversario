@@ -1,21 +1,9 @@
-<li [ngClass]="{ editing: isEditing, completed: todo.isCompleted }">
-  <div class="view">
-    <input
-      class="toggle"
-      type="checkbox"
-      [checked]="todo.isCompleted"
-      (change)="toggleTodo()"
-    />
-    <label (dblclick)="setTodoInEditMode()">{{ todo.text }}</label>
-    <button class="destroy" (click)="removeTodo()"></button>
+<div class="note-container" [ngClass]="{ 'completed': todo.isCompleted, 'incomplete': !todo.isCompleted }">
+  <h3 class="note-title">Título: {{ todo.title }}</h3>
+  <text-area [control]="noteControl"></text-area>
+  <span class="small-date">{{todo.time | customDate}}</span>
+  <div class="note-actions">
+    <button [disabled]="noteControl.invalid" class="btn edit-btn" (click)="changeTodo()">✏️</button>
+    <button class="btn delete-btn" (click)="removeTodo()">🗑️</button>
   </div>
-  <ng-container *ngIf="isEditing">
-    <input
-      class="edit"
-      #textInput
-      [value]="editingText"
-      (keyup)="changeText($event)"
-      (keyup.enter)="changeTodo()"
-    />
-  </ng-container>
-</li>
+</div>

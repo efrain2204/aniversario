@@ -9,13 +9,14 @@ import {forkJoin} from "rxjs";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  todosService = inject(NotesService);
-  todosFirebaseService = inject(NotesFirebaseService);
+
+  notesService = inject(NotesService);
+  notesFirebaseService = inject(NotesFirebaseService);
   editingId: string | null = null;
 
   visibleTodos = computed(() => {
-    const todos = this.todosService.todosSig();
-    const filter = this.todosService.filterSig();
+    const todos = this.notesService.todosSig();
+    const filter = this.notesService.filterSig();
 
     if (filter === FilterEnum.active) {
       return todos.filter((todo) => !todo.isCompleted);
@@ -24,10 +25,12 @@ export class MainComponent {
     }
     return todos;
   });
+
   isAllTodosSelected = computed(() =>
-    this.todosService.todosSig().every((todo) => todo.isCompleted)
+    this.notesService.todosSig().every((todo) => todo.isCompleted)
   );
-  noTodosClass = computed(() => this.todosService.todosSig().length === 0);
+
+  noTodosClass = computed(() => this.notesService.todosSig().length === 0);
 
   setEditingId(editingId: string | null): void {
     this.editingId = editingId;
@@ -35,14 +38,14 @@ export class MainComponent {
 
   toggleAllTodos(event: Event): void {
     const target = event.target as HTMLInputElement;
-    const requests$ = this.todosService.todosSig().map((todo) => {
-      return this.todosFirebaseService.updateTodo(todo.id, {
+    const requests$ = this.notesService.todosSig().map((todo) => {
+      return this.notesFirebaseService.updateTodo(todo.id, {
         text: todo.text,
         isCompleted: target.checked,
       });
     });
     forkJoin(requests$).subscribe(() => {
-      this.todosService.toggleAll(target.checked);
+      this.notesService.toggleAll(target.checked);
     });
   }
 }

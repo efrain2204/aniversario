@@ -1,5 +1,33 @@
+<div class="bg-img"></div>
+
+
 <div class="todoapp">
-  <app-header></app-header>
+  <div class="container-title stylish-title">
+    <span class="stylish-title">Zona Sofi</span>
+    <div style="width: 60px">
+      <app-image-renderer imageUrl="https://media1.tenor.com/m/woAPbK0qj5gAAAAd/%E0%B8%AD%E0%B8%B4%E0%B8%AD%E0%B8%B4-snowball.gif"></app-image-renderer>
+    </div>
+  </div>
   <app-main></app-main>
   <app-footer></app-footer>
 </div>
+
+
+<!--EXTRAS-->
+<img (click)="back()" src="https://res.cloudinary.com/dzydl81rq/image/upload/v1735183872/assests/dcyqmki7er1t9n1oykdm.svg" width="50" height="50" alt="album" class="back">
+
+<div class="add" (click)="openNewNote()">
+  <app-image-renderer [circle]="true" imageUrl="https://media1.tenor.com/m/JvzOQQjGCHsAAAAd/draw-picture.gif"></app-image-renderer>
+</div>
+
+
+<app-popup label="Puedes escribir aquí!" *ngIf="newNoteModal" (clickClose)="clearModal()">
+  <bunny-input placeHolder="Ingrese el título" [control]="titleNoteControl"></bunny-input>
+  <text-area [control]="noteControl"></text-area>
+  <app-button
+    [disabled]="titleNoteControl.invalid || noteControl.invalid"
+    *ngIf="newNoteModal.button1Text"
+    [label]="newNoteModal.button1Text"
+    (click)="newNoteModal.onButton1Click?.()"
+  ></app-button>
+</app-popup>

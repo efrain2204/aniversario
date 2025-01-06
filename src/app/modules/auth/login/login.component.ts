@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit, OnDestroy{
   modalVerificarIntentos?: modelSimpleQuestion;
   loaderImg: string | undefined;
   intervalId: any;
-  randomNumber = Math.floor(Math.random() * 10) + 1;
+  randomNumber = Math.floor(Math.random() * 3) + 1;
 
   constructor(
     private authService:AuthService,
