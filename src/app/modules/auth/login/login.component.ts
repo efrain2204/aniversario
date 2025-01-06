@@ -184,4 +184,7 @@ export class LoginComponent implements OnInit, OnDestroy{
       }
     }
   }
+  openNotes(){
+    this.router.navigate(['/notes']);
+  }
 }
