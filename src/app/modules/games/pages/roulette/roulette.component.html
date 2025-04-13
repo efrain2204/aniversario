@@ -2,3 +2,10 @@
   <app-button id="spin" (click)="spin()" label="Girar!"></app-button>
   <canvas #canvas id="canvas" [width]="size" [height]="size"></canvas>
 </div>
+
+<div style="display: flex;flex-direction: column;gap: 10px">
+  <bunny-input [control]="newWord"></bunny-input>
+  <app-button label="Agregar palabra" (click)="word('add')"></app-button>
+  <app-button backgroundColor="#3e3e3e" label="Eliminar último" (click)="word('delete')"></app-button>
+</div>
+

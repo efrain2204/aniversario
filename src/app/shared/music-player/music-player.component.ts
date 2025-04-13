@@ -10,9 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class MusicPlayerComponent implements OnInit{
   songs = [
-    { title: 'Hello', url: 'assets/sounds/songs/Hello.mp3' },
-    { title: 'Some like you', url: 'assets/sounds/songs/SomeoneLikeYou.mp3' },
-    { title: 'Todos me miran', url: 'assets/sounds/songs/TodosMeMiran.mp3' },
+    { title: 'chofi', url: 'assets/sounds/songs/chofi.mp3' },
+    { title: 'vuelve', url: 'assets/sounds/songs/vuelve.mp3' },
+    { title: 'busca', url: 'assets/sounds/songs/busca.mp3' },
+    { title: 'besos', url: 'assets/sounds/songs/besos.mp3' },
   ];
 
   currentSongIndex = 0;

@@ -9,11 +9,15 @@ import {GamesCoreService} from "../../services/games-core.service";
 })
 export class PuzzleComponent {
   images = [
-    { name: 'Imagen 1', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184324/assests/ozx9dfykk5w55bqx16lz.jpg' },
-    { name: 'Imagen 2', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184331/assests/ilquwoxz0jh93l5m6bdl.jpg' },
-    { name: 'Imagen 3', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184323/assests/vyxbb36aevamixzulatr.jpg' },
-    { name: 'Imagen 4', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184334/assests/bqwhcbsdzt4aoyqjnxlx.jpg' },
-    { name: 'Imagen 5', path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1656358280/samples/landscapes/nature-mountains.jpg'}
+    {path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569318/xoeloaoyxbevsi7lc0fp.jpg', name: "uno"},
+    {path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569318/q2q1ipvslbqthhrlcdks.jpg', name: "dos"},
+    {path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569318/xffqulbxockdopkvdmgs.jpg', name: "tres"},
+    {path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569318/qsklqd4f6n9sitxcajgd.jpg', name: "cuatro"},
+    {path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569317/z600xdcn2gq2aiwntgmq.jpg', name: "cinco"},
+    {path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569318/jnnpll85tka2ui8ftmnb.jpg', name: "seis"},
+    {path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569317/kpbo28ns3gbufykhnj68.jpg', name: "siete"},
+    {path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569317/gcawlmxqaef0uv54dxtf.jpg', name: "ocho"},
+    {path: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569317/wpzndzllb96v5drmpyue.jpg', name: "nueve"},
   ];
   gridOptions = [3, 4, 5]; // 3x3, 4x4, 5x5 grids
 

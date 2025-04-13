@@ -12,13 +12,18 @@ import {GamesCoreService} from "../../games/services/games-core.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy{
+export class LoginComponent implements OnInit, OnDestroy {
 
   gatosEsperandoIM = new ImageManager([
     'https://media1.tenor.com/m/J2NId9AGVnMAAAAd/%EB%AA%A8%EC%B0%8C-%EB%AA%A8%EB%AA%A8%EC%B0%8C.gif',
     'https://media1.tenor.com/m/giDNGgvic28AAAAd/hi-rawr.gif',
     'https://media.tenor.com/rzbM238OZ7MAAAAi/mochi-cat-chibi-cat.gif',
     'https://media.tenor.com/tdeVEqmiDBAAAAAi/cutie-cat.gif'
+  ])
+  gatostristesIM = new ImageManager([
+    'https://media.tenor.com/vFojGfJgDbgAAAAi/rabbit-bunny.gif',
+    'https://media.tenor.com/YgxdehHpC1wAAAAi/very-miss-rabbit.gif',
+    'https://media1.tenor.com/m/VRL9uBdvLTMAAAAd/%D1%83%D1%85.gif'
   ])
 
   animalesEquivocadosIM = new ImageManager([
@@ -43,12 +48,6 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   ])
 
-  gatostristesIM = new ImageManager([
-    'https://media.tenor.com/vFojGfJgDbgAAAAi/rabbit-bunny.gif',
-    'https://media.tenor.com/YgxdehHpC1wAAAAi/very-miss-rabbit.gif',
-    'https://media1.tenor.com/m/VRL9uBdvLTMAAAAd/%D1%83%D1%85.gif'
-  ])
-
   gatosJugandoIM = new ImageManager([
     'https://media.tenor.com/hCe2efigdH0AAAAj/tkthao219-bubududu.gif',
     'https://media.tenor.com/TSESz0xHRPUAAAAj/iklog.gif',
@@ -58,29 +57,28 @@ export class LoginComponent implements OnInit, OnDestroy{
   ])
 
   listMagicWord = [
-    'Amoreeeeeee',
-    'sofia de quiñonez',
-    '26 de mayo',
-    '26/05/2024',
-    'te amo bb',
-    'saltarina y godofredo',
-    'traca traca todas las noches',
-    'mañanero',
-    '28/07/1995',
-    '12/05/2001'
+    'chofi',
+    'salti',
+    'godines',
+    'dormilona',
+    'tomatito',
+    'cachetona',
+    'gabi',
+    'helado',
+    'chaufa',
+    'chuleta',
+    'curtidito'
   ]
 
-  nIntentos = 0;
-  palabraControl = new FormControl('',[Validators.required]);
+  palabraControl = new FormControl('', [Validators.required]);
   modalVerificarIntentos?: modelSimpleQuestion;
   loaderImg: string | undefined;
   intervalId: any;
-  randomNumber = Math.floor(Math.random() * 3) + 1;
 
   constructor(
-    private authService:AuthService,
+    private authService: AuthService,
     private router: Router,
-    private gameCore:GamesCoreService) {
+    private gameCore: GamesCoreService) {
   }
 
   ngOnInit() {
@@ -98,83 +96,75 @@ export class LoginComponent implements OnInit, OnDestroy{
     }
   }
 
-  hearts(){
+  hearts() {
     const container = document.querySelector('.containerHeart')!;
     const creat = document.createElement('div')
     const creat2 = document.createElement('div')
     const creat3 = document.createElement('div')
+    const creat4 = document.createElement('div')
     creat.classList.add('hearts');
     creat2.classList.add('hearts');
     creat3.classList.add('hearts');
-    creat.innerHTML =  `❤️`
-    creat2.innerHTML =  `🌻`
-    creat3.innerHTML =  `🐇`
+    creat4.classList.add('hearts');
+    creat.innerHTML = `💙`
+    creat2.innerHTML = `🌻`
+    creat3.innerHTML = `🌞`
+    creat4.innerHTML = `🍦`
 
     creat.style.left = Math.random() * 100 + 'vw';
     creat2.style.left = Math.random() * 100 + 'vw';
     creat3.style.left = Math.random() * 100 + 'vw';
-    creat.style.animationDuration = Math.random() * 3 +2 + 's';
-    creat2.style.animationDuration = Math.random() * 3 +2 + 's';
-    creat3.style.animationDuration = Math.random() * 3 +2 + 's';
+    creat4.style.left = Math.random() * 100 + 'vw';
+    creat.style.animationDuration = Math.random() * 3 + 2 + 's';
+    creat2.style.animationDuration = Math.random() * 3 + 2 + 's';
+    creat3.style.animationDuration = Math.random() * 3 + 2 + 's';
+    creat4.style.animationDuration = Math.random() * 3 + 2 + 's';
 
     container.appendChild(creat)
     container.appendChild(creat2)
     container.appendChild(creat3)
-    setTimeout(()=> {
+    container.appendChild(creat4)
+    setTimeout(() => {
       creat.remove()
       creat2.remove()
       creat3.remove()
-    },3000)
+      creat4.remove()
+    }, 3000)
   }
 
-  verificarPalabra(){
-    this.nIntentos++
-    if(this.nIntentos === this.randomNumber){
-      this.modalVerificarIntentos = {
-        question:'Creo que ta malogrado el boton je',
-        urlImg: this.gatostristesIM.getRandomImage(),
-        button1Text: 'Intentar de nuevo',
-        onButton1Click: () => {
-          if(this.modalVerificarIntentos){
-            this.modalVerificarIntentos.urlImg = this.gatosEsperandoIM.getRandomImage()
-            this.modalVerificarIntentos.button1Text = undefined
-            this.modalVerificarIntentos.question = `Estoy pensando si la palabra ${this.palabraControl.value ?? ''} es correcta!!`
-            this.validateWord(this.palabraControl.value?? '')
+  validateWord() {
+    if (this.palabraControl.value && this.palabraControl.value.length > 0) {
+      const word = this.palabraControl.value.toLowerCase();
+      if (this.listMagicWord.includes(word.toLowerCase())) {
+        this.authService.allowAccess = true;
+        this.modalVerificarIntentos = {
+          question: `${this.palabraControl.value ?? ''}: es la correcta, felicitaciones!!`,
+          urlImg: this.animalesFelicesIM.getRandomImage(),
+          button1Text: 'Reclama tu premio!',
+          onButton1Click: () => {
+            this.router.navigate(['/dashboard']);
+          }
+        }
+
+      } else {
+        this.modalVerificarIntentos = {
+          question: `${this.palabraControl.value ?? ''}: no es la correcta, F!!`,
+          urlImg: this.animalesEquivocadosIM.getRandomImage(),
+          button1Text: 'Revisa la palabra ratona!',
+          onButton1Click: () => {
+            this.closeModalVerificar()
           }
         }
       }
     }
-
   }
 
-  validateWord(value: string){
-    if(this.palabraControl.value && this.palabraControl.value.length > 0){
-      const word = this.palabraControl.value.toLowerCase();
-      if(this.listMagicWord.includes(word)){
-        if(this.modalVerificarIntentos){
-          this.modalVerificarIntentos.urlImg = this.animalesFelicesIM.getRandomImage();
-          this.modalVerificarIntentos.question = `Esta palabra -> ${this.palabraControl.value ?? ''} es la correcta!!`
-          this.authService.allowAccess = true;
-        }
-        setTimeout(()=>{
-          this.router.navigate(['/dashboard']);
-        },5000)
-
-      }else{
-        if(this.modalVerificarIntentos){
-          this.modalVerificarIntentos.urlImg = this.animalesEquivocadosIM.getRandomImage();
-          this.modalVerificarIntentos.question = `Esta palabra -> ${this.palabraControl.value ?? ''} no es la correcta!!`
-        }
-      }
-    }
-  }
-
-  closeModalVerificar(){
+  closeModalVerificar() {
+    this.palabraControl.setValue('')
     this.modalVerificarIntentos = undefined;
-    this.nIntentos = 0
   }
 
-  openModalGames(){
+  openModalGames() {
     this.modalVerificarIntentos = {
       question: 'Aqui podras jugar algunos juegos que te permitiran saltarte la palabra magica!',
       urlImg: this.gatosJugandoIM.getRandomImage(),
@@ -184,7 +174,8 @@ export class LoginComponent implements OnInit, OnDestroy{
       }
     }
   }
-  openNotes(){
+
+  openNotes() {
     this.router.navigate(['/notes']);
   }
 }

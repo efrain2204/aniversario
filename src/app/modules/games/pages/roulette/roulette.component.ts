@@ -11,15 +11,10 @@ export class RouletteComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas') canvasRef?: ElementRef<HTMLCanvasElement>;
   ctx: CanvasRenderingContext2D | null = null;
   options = [
-    'Nalgadazo',
-    'arrimon',
-    '30 sentadillas',
-    '30 planchas',
-    'voltereta',
-    'WIN',
-    'mortal',
-    'Nada',
-    "tomate mx"
+    'Besito',
+    'Cartita',
+    'Chocolatito',
+    'Traca-Traca',
   ];
   startAngle = 0;
   arc = Math.PI / (this.options.length / 2);
@@ -30,13 +25,17 @@ export class RouletteComponent implements OnInit, AfterViewInit {
   selected = '';
   size = 320;
 
-  constructor( private coreGame:GamesCoreService) {}
+  newWord = new FormControl('');
+
+  constructor(private coreGame: GamesCoreService) {
+  }
 
   ngAfterViewInit(): void {
     this.drawRouletteWheel();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   get canvas(): HTMLCanvasElement {
     return this.canvasRef!.nativeElement;
@@ -188,7 +187,7 @@ export class RouletteComponent implements OnInit, AfterViewInit {
   }
 
   rotateWheel() {
-    this.spinTime += 30;
+    this.spinTime += 20;
     if (this.spinTime >= this.spinTimeTotal) {
       this.stopRotateWheel();
       return;
@@ -226,6 +225,23 @@ export class RouletteComponent implements OnInit, AfterViewInit {
     var ts = (t /= d) * t;
     var tc = ts * t;
     return b + c * (tc + -3 * ts + 3 * t);
+  }
+
+  redibujar(){
+    this.arc = Math.PI / (this.options.length / 2);
+    this.drawRouletteWheel()
+  }
+
+  word(mode : 'add' | 'delete') {
+    const word = this.newWord.getRawValue()
+    if(word && word.length > 1 && mode == 'add') {
+      this.options.push(word);
+      this.newWord.setValue('');
+      this.redibujar()
+    }else if(this.options.length > 2 && mode == 'delete') {
+      this.options.pop();
+      this.redibujar()
+    }
   }
 
 }

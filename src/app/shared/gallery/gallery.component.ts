@@ -17,6 +17,15 @@ export interface imagesMessage {
 })
 export class ViewGalleryComponent implements OnInit {
   displayedImages: imagesMessage[] = [
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569318/xoeloaoyxbevsi7lc0fp.jpg', message: "Nuevas fotos!"},
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569318/q2q1ipvslbqthhrlcdks.jpg', message: "Nuevas fotos!"},
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569318/xffqulbxockdopkvdmgs.jpg', message: "Nuevas fotos!"},
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569318/qsklqd4f6n9sitxcajgd.jpg', message: "Nuevas fotos!"},
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569317/z600xdcn2gq2aiwntgmq.jpg', message: "Nuevas fotos!"},
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569318/jnnpll85tka2ui8ftmnb.jpg', message: "Nuevas fotos!"},
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569317/kpbo28ns3gbufykhnj68.jpg', message: "Nuevas fotos!"},
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569317/gcawlmxqaef0uv54dxtf.jpg', message: "Nuevas fotos!"},
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1744569317/wpzndzllb96v5drmpyue.jpg', message: "Nuevas fotos!"},
     {
       url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184321/assests/gifvrci27yq7dxvensn3.jpg',
       message: 'Aqui esta la imagen donde te veo muy apasianado y sexy, una mirada que me desarma y pone nervioso!'
@@ -29,10 +38,9 @@ export class ViewGalleryComponent implements OnInit {
       url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184327/assests/wqzvzwnwdfdssxmiimny.jpg',
       message: '¡Eres una persona increíble Amor, la energía que desbordas me impulsa a ser alguien que merezca estar a tu lado, eso me encanta!'
     },
-    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184320/assests/xuduwewottfclpxvqvgn.jpg',message:"Nuestros pecados bb, comer pero debemos hacer nuestro cardio luego!"},
+    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184320/assests/xuduwewottfclpxvqvgn.jpg',message:"Nuestros pecados bb!"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184321/assests/wgjs7wzbtcbtejb3an9o.jpg',message: "una de mis fotos preferidas y que me gustaria esten en mejor calidad ppipipi!"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184323/assests/uppetpfkia5wwleuojsc.jpg',message: "Nuestra primera maratón, fue increible espero se repita!"},
-    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184322/assests/p8ubafvvelmf7cdjwtwn.jpg', message: "Luego de nuestra noche de pasión, viene nuestras locuras!"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184325/assests/mom74a5gaepkyjyrgpgh.jpg', message:"El capibara que me demore en conseguirlo, espero te gustara!"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184324/assests/furoyobkwzcd1aejwrto.jpg', message:"Aqui veo a un hombre y a su mujer, que disfrutan su tiempo juntos wiiiiu!"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184324/assests/ytklfkcpst4zwa8j3no3.jpg',message: "Noche mexicana contigo, me encanta todos los planes que hacemos"},
@@ -50,7 +58,6 @@ export class ViewGalleryComponent implements OnInit {
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184334/assests/bqwhcbsdzt4aoyqjnxlx.jpg', message: "Nuestra visita al colca, lugares increibles pocas fotos juntos, eso cambiaremos para nuestro 2025!"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184328/assests/mccwtbmlyijguywppp4s.jpg', message:"Si todo pereciera y tú quedaras, yo seguiría existiendo; y si todo permaneciera y tú desaparecieras, el universo sería extraño para mí"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184319/assests/bmlxnmmoncleszxkdgnd.jpg', message: "Tus palabras son como caricias para mi alma"},
-    {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184320/assests/bjxgepbo7uu5plfmwx8z.jpg', message: "Foto divertida donde podemos ver la diferencia de tamaño bb!"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184322/assests/k1w0p9w06vdafzmosnnk.jpg', message: "Nuestro viaje a Cuzco, solo puedo repetir en mi mente: 'Mi corazón solo conoce un idioma: el de amarte sin límites'"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184319/assests/drt7n9jbnmgeg5kzcnah.jpg',message: "El chuyo que se perdio, pipipi lo extrañaremos muchoooo!"},
     {url: 'https://res.cloudinary.com/dzydl81rq/image/upload/v1735184320/assests/ak8f0uqniqipx3nvajke.jpg', message: "Chicos serios captados en camara ! je"},

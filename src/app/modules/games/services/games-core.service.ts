@@ -20,11 +20,11 @@ export class GamesCoreService {
 
 
   allowEnterButton(){
-    return (this.bestScoreTrivia >= 100) &&
-      (this.bestScoreMemory>=90) &&
-      (this.bestScoreHunterHeart >=10) &&
-      this.allowDados && this.allowPuzzle && this.allowRoulette &&
-      (this.allowCompatibility>=90)
+    return (this.bestScoreTrivia >= 80) &&
+      (this.bestScoreMemory>=80) &&
+      (this.bestScoreHunterHeart >=7) &&
+      this.allowPuzzle &&
+      (this.allowCompatibility>=70)
     // return true
   }
   resetValues(){

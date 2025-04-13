@@ -23,7 +23,7 @@
         [ngStyle]="getPieceStyle(i)"
         (click)="selectPiece(i)">
         <img [src]="piece.image" alt="Puzzle piece" />
-        <span *ngIf="piece.selected">{{ piece.order }}</span>
+        <span *ngIf="piece.selected">{{ piece.orderSelected }}</span>
       </div>
     </div>
   </div>
