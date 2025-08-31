@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {AuthService} from "../service/auth.service";
-import {modelSimpleQuestion} from "../../../shared/popup/popup.component";
-import {ImageManager} from "../../../utils/ImageManager";
-import {Validators} from "../../../utils/Validators/Validators";
-import {Router} from "@angular/router";
-import {GamesCoreService} from "../../games/services/games-core.service";
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from "@angular/forms";
+import { AuthService } from "../service/auth.service";
+import { modelSimpleQuestion } from "../../../shared/popup/popup.component";
+import { ImageManager } from "../../../utils/ImageManager";
+import { Validators } from "../../../utils/Validators/Validators";
+import { Router } from "@angular/router";
+import { GamesCoreService } from "../../games/services/games-core.service";
 
 @Component({
   selector: 'app-login',
@@ -57,17 +57,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   ])
 
   listMagicWord = [
+    'efrain',
     'chofi',
-    'salti',
-    'godines',
-    'dormilona',
-    'tomatito',
-    'cachetona',
-    'gabi',
-    'helado',
-    'chaufa',
-    'chuleta',
-    'curtidito'
+    'blanquita',
+    'bombom'
   ]
 
   palabraControl = new FormControl('', [Validators.required]);
@@ -106,10 +99,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     creat2.classList.add('hearts');
     creat3.classList.add('hearts');
     creat4.classList.add('hearts');
-    creat.innerHTML = `💙`
-    creat2.innerHTML = `🌻`
-    creat3.innerHTML = `🌞`
-    creat4.innerHTML = `🍦`
+    creat.innerHTML = `🐇`
+    creat2.innerHTML = `🐐`
+    creat3.innerHTML = `🍂`
+    creat4.innerHTML = `🌿`
 
     creat.style.left = Math.random() * 100 + 'vw';
     creat2.style.left = Math.random() * 100 + 'vw';

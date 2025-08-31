@@ -1,5 +1,7 @@
 .bg{
-  background: linear-gradient(to bottom, #a1c4fd, #c2e9fb);
+  background: linear-gradient(135deg, #0d0d0d, #2e2e3a, #585870, #a8bcd0);
+
+
   width: 100%;
   min-height: 100vh;
 }
@@ -30,7 +32,7 @@
   span{
     display: inline-block;
     padding: 5px 10px;
-    background-color: #f48fb1; /* Rosa pastel */
+    background-color: #08d9d6; /* Rosa pastel */
     color: #ffffff; /* Texto blanco */
 
     font-weight: bold;
@@ -40,14 +42,13 @@
     cursor: pointer;
     transition: all 0.3s ease;
     &:hover {
-      background-color: #e76792; /* Cambiar color */
-      border-color: #67112f; /* Cambiar borde */
+      background-color: #08d9d6; /* Cambiar color */
       transform: scale(1.05); /* Aumentar tamaño */
     }
 
     /* Efectos al presionar */
     &:active {
-      background-color: #e76792;
+      background-color: #08d9d6;
       transform: scale(0.95);
     }
   }

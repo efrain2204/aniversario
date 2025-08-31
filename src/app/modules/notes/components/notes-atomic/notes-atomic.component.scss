@@ -5,10 +5,10 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.3s ease;
 
-  background-image: url('https://png.pngtree.com/background/20220727/original/pngtree-heart-seamless-pattern-love-hearts-picture-image_1834476.jpg');
-  background-size: 200px; /* Tamaño de cada corazón */
-  background-repeat: repeat; /* Repite el patrón */
-  background-position: center;
+  background-image: url('https://static.vecteezy.com/system/resources/thumbnails/010/055/930/small_2x/mountain-landscape-nature-background-in-green-travel-adventure-illustration-vector.jpg');
+background-size: cover;       /* Ocupa todo el ancho y alto */
+background-repeat: no-repeat; /* No se repite */
+background-position: center; 
 
 }
 
@@ -16,13 +16,14 @@
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 8px;
-  color: white;
+  color: black;
 }
 
 .note-actions {
   display: flex;
   gap: 10px;
-  justify-content: flex-end; /* Botones alineados a la derecha */
+  justify-content: flex-end;
+  /* Botones alineados a la derecha */
 }
 
 .btn {
@@ -44,16 +45,24 @@
 
 
 .note-container.complete {
-  border: 2px solid #4caf50; /* Verde para notas importantes */
+  border: 2px solid #4caf50;
+  /* Verde para notas importantes */
 }
 
 .note-container.incomplete {
-  border: 2px solid #b0b0b0; /* Gris para notas regulares */
+  border: 2px solid #b0b0b0;
+  /* Gris para notas regulares */
 }
+
 .small-date {
-  font-size: 0.8rem; /* Tamaño pequeño */
-  color: white; /* Color gris claro */
-  font-family: Arial, sans-serif; /* Fuente simple y legible */
-  margin-top: 5px; /* Espaciado superior */
-  display: block; /* Para asegurar que se muestre en una línea separada si es necesario */
+  font-size: 0.8rem;
+  /* Tamaño pequeño */
+  color: white;
+  /* Color gris claro */
+  font-family: Arial, sans-serif;
+  /* Fuente simple y legible */
+  margin-top: 5px;
+  /* Espaciado superior */
+  display: block;
+  /* Para asegurar que se muestre en una línea separada si es necesario */
 }

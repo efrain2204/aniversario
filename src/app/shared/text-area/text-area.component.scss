@@ -6,13 +6,36 @@
 
 textarea {
   width: 100%;
+  height: 120px;
   font-size: 14px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
   resize: vertical;
   transition: border-color 0.3s ease;
+    resize: none; /* opcional */
+  
+  /* Siempre mostrar scroll si quieres */
+  overflow-y: scroll; 
 }
+
+/* Scrollbar en navegadores WebKit (Chrome, Edge, Safari) */
+textarea::-webkit-scrollbar {
+  width: 16px;  /* grosor de la barra vertical */
+  height: 16px; /* grosor de la barra horizontal */
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: #4CAF50; /* color del "pulgar" */
+  border-radius: 8px;        /* esquinas redondeadas */
+  border: 3px solid #e0f2f1; /* espacio alrededor del pulgar */
+}
+
+textarea::-webkit-scrollbar-track {
+  background: #f1f1f1; /* fondo del track */
+  border-radius: 8px;
+}
+
 
 textarea:focus {
   outline: none;

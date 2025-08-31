@@ -8,13 +8,16 @@
   animation: fadeIn 1.5s ease-in-out;
 
   span {
-    font-size: 3rem; /* Tamaño grande y llamativo */
-    text-align: center; /* Centrado en la página */
-    background: linear-gradient(90deg, #ff7eb3, #ff758c, #ff6a85);
-    background-clip: text; /* Aplica el degradado solo al texto */
+    font-size: 3rem;
+    /* Tamaño grande y llamativo */
+    text-align: center;
+    /* Centrado en la página */
+    background: black;
+    background-clip: text;
+    /* Aplica el degradado solo al texto */
     -webkit-background-clip: text;
-    color: transparent; /* Hace que el fondo sea visible */
-    text-shadow: 1px 1px 2px rgb(255, 95, 109); /* Sombra sutil */
+    color: transparent;
+    /* Hace que el fondo sea visible */
     margin: 20px 0;
     padding: 0;
     line-height: 1.2;
@@ -27,6 +30,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -45,22 +49,24 @@
 }
 
 .bg-img {
-  position: fixed; /* Hacer que el fondo sea fijo */
+  position: fixed;
+  /* Hacer que el fondo sea fijo */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #f3f3f3, #f9d1d1);
-  z-index: -1; /* Asegurarse de que el fondo no bloquee el contenido */
+  background: linear-gradient(135deg, #d8f3dc, #95d5b2, #52b788, #2d6a4f);
+  z-index: -1;
+  /* Asegurarse de que el fondo no bloquee el contenido */
 }
 
 .todoapp {
   padding: 50px 0 150px 0;
 }
 
-.back{
+.back {
   position: fixed;
-  bottom: 10px  ;
+  bottom: 10px;
   left: 10px;
   border-radius: 50%;
   box-shadow: 1px 1px 10px #f48fb1;

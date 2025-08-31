@@ -8,7 +8,12 @@
   align-items: center;
   flex-direction: column;
   font-family: sans-serif;
-  background: linear-gradient(45deg, #FFEB3B, #FF6F61, #40E0D0);
+  background: radial-gradient(circle at 25% 30%, #a8d5ba 0%, transparent 30%),
+    radial-gradient(circle at 70% 40%, #6b8e23 0%, transparent 25%),
+    radial-gradient(circle at 30% 75%, #c2b280 0%, transparent 25%),
+    radial-gradient(circle at 80% 75%, #556b2f 0%, transparent 35%),
+    linear-gradient(135deg, #e6d17f 0%, #b4c292 40%, #5c743d 100%);
+  background-blend-mode: screen, multiply, overlay, lighten, normal;
 }
 
 ::ng-deep .hearts {
@@ -36,7 +41,7 @@
 }
 
 
-.ayuda{
+.ayuda {
   position: fixed;
   width: 50px;
   height: 50px;
@@ -45,7 +50,8 @@
   border-radius: 50%;
   box-shadow: 1px 1px 21px white;
 }
-.ayuda2{
+
+.ayuda2 {
   position: fixed;
   width: 50px;
   height: 50px;

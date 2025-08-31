@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class MusicPlayerComponent implements OnInit{
   songs = [
+    { title: 'kimetzu!!!', url: 'assets/sounds/songs/kimetsu.mp3' },
     { title: 'chofi', url: 'assets/sounds/songs/chofi.mp3' },
     { title: 'vuelve', url: 'assets/sounds/songs/vuelve.mp3' },
     { title: 'busca', url: 'assets/sounds/songs/busca.mp3' },
