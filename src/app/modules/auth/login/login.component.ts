@@ -6,6 +6,7 @@ import { ImageManager } from "../../../utils/ImageManager";
 import { Validators } from "../../../utils/Validators/Validators";
 import { Router } from "@angular/router";
 import { GamesCoreService } from "../../games/services/games-core.service";
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -62,6 +63,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     'blanquita',
     'bombom'
   ]
+
+
 
   palabraControl = new FormControl('', [Validators.required]);
   modalVerificarIntentos?: modelSimpleQuestion;
@@ -170,5 +173,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   openNotes() {
     this.router.navigate(['/notes']);
+  }
+
+  goToExternal() {
+    this.router.navigate(['/external']);
   }
 }

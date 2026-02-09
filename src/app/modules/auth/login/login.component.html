@@ -3,34 +3,33 @@
     <app-image-renderer imageUrl="https://media1.tenor.com/m/5WHF9Pe5IA8AAAAC/goat-goats.gif"></app-image-renderer>
     <div style="text-align: center">
       <h1>Modo chivito para mi bb!!</h1>
-      <span style="font-size: 10px;font-weight:bold;color: #261f1f">Ayuda: prueba nombre de comidas, cosas, seres vivos, no importa si esta en mayus o minus!</span>
+      <span style="font-size: 10px;font-weight:bold;color: #261f1f">Ayuda: prueba nombre de comidas, cosas, seres vivos,
+        no importa si esta en mayus o minus!</span>
     </div>
     <bunny-input [control]="palabraControl"></bunny-input>
     <app-button [disabled]="palabraControl.invalid" [label]="'Prueba aquí!'" (click)="validateWord()"></app-button>
+    <div class="link shake-on-hover" (click)="goToExternal()">Ver Excel de pagos</div>
   </div>
 </div>
 
 
 
 <div class="ayuda" (click)="openNotes()">
-  <app-image-renderer [circle]="true" imageUrl="https://media1.tenor.com/m/ICGSBfQQFxUAAAAd/baby-pepper-pepper.gif"></app-image-renderer>
+  <app-image-renderer [circle]="true"
+    imageUrl="https://media1.tenor.com/m/ICGSBfQQFxUAAAAd/baby-pepper-pepper.gif"></app-image-renderer>
 </div>
 <div class="ayuda2" (click)="openModalGames()">
-  <app-image-renderer [circle]="true" imageUrl="https://media.tenor.com/Q0anovSbMjoAAAAi/fullcircle-skate.gif"></app-image-renderer>
+  <app-image-renderer [circle]="true"
+    imageUrl="https://media.tenor.com/Q0anovSbMjoAAAAi/fullcircle-skate.gif"></app-image-renderer>
 </div>
 
-<app-popup
-  *ngIf="modalVerificarIntentos"
-  (clickClose)="closeModalVerificar()"
-  label="Alto ahi responda con cuidado!!">
-  <app-image-renderer *ngIf="modalVerificarIntentos.urlImg" [imageUrl]="modalVerificarIntentos.urlImg"></app-image-renderer>
+<app-popup *ngIf="modalVerificarIntentos" (clickClose)="closeModalVerificar()" label="Alto ahi responda con cuidado!!">
+  <app-image-renderer *ngIf="modalVerificarIntentos.urlImg"
+    [imageUrl]="modalVerificarIntentos.urlImg"></app-image-renderer>
   <h2>{{modalVerificarIntentos.question}}</h2>
   <div style="display: flex;justify-content: center">
-    <app-button
-      *ngIf="modalVerificarIntentos.button1Text"
-      [label]="modalVerificarIntentos.button1Text"
-      (click)="modalVerificarIntentos.onButton1Click?.()"
-    ></app-button>
+    <app-button *ngIf="modalVerificarIntentos.button1Text" [label]="modalVerificarIntentos.button1Text"
+      (click)="modalVerificarIntentos.onButton1Click?.()"></app-button>
   </div>
 </app-popup>
 
