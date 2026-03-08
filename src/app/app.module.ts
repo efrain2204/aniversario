@@ -8,7 +8,7 @@ import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 import {getFirestore, provideFirestore} from "@angular/fire/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA_y4_jyYxBw4rJU5rEzwgbYuuOsCPsZ5U",
+  apiKey: "AIzaSyB8Sjp_44vSF5TIO7STJimeNQeID-7fXfI",
   authDomain: "journal-app-76966.firebaseapp.com",
   projectId: "journal-app-76966",
   storageBucket: "journal-app-76966.firebasestorage.app",
