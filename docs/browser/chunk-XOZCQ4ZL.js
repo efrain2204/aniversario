@@ -1,0 +1,1 @@
+import{p as c}from"./chunk-Y6VRBKWV.js";var r=(()=>{class t{get allowAccess(){return this._allowAccess}set allowAccess(s){this._allowAccess=s}constructor(){this._allowAccess=!1}static{this.\u0275fac=function(e){return new(e||t)}}static{this.\u0275prov=c({token:t,factory:t.\u0275fac,providedIn:"root"})}}return t})();export{r as a};
