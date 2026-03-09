@@ -1,11 +1,11 @@
-import {importProvidersFrom, NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { importProvidersFrom, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {MusicPlayerComponent} from "./shared/music-player/music-player.component";
-import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
-import {getFirestore, provideFirestore} from "@angular/fire/firestore";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { MusicPlayerComponent } from "./shared/music-player/music-player.component";
+import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
+import { getFirestore, provideFirestore } from "@angular/fire/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB8Sjp_44vSF5TIO7STJimeNQeID-7fXfI",
@@ -20,16 +20,14 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MusicPlayerComponent,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MusicPlayerComponent,
+  ],
   providers: [
-    importProvidersFrom([
-      provideFirebaseApp(() => initializeApp(firebaseConfig)),
-      provideFirestore(() => getFirestore()),
-    ]),
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideFirestore(() => getFirestore()),
   ],
   bootstrap: [AppComponent]
 })
