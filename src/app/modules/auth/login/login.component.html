@@ -1,30 +1,70 @@
-<div class="containerHeart">
-  <div class="login">
-    <app-image-renderer imageUrl="https://media1.tenor.com/m/5WHF9Pe5IA8AAAAC/goat-goats.gif"></app-image-renderer>
-    <div style="text-align: center">
-      <h1>Modo chivito para mi bb!!</h1>
-      <span style="font-size: 10px;font-weight:bold;color: #261f1f">Ayuda: prueba nombre de comidas, cosas, seres vivos,
-        no importa si esta en mayus o minus!</span>
+<div class="cusco-container">
+  <!-- Montañas decorativas de fondo -->
+  <div class="mountains">
+    <div class="mountain mountain-1"></div>
+    <div class="mountain mountain-2"></div>
+    <div class="mountain mountain-3"></div>
+    <div class="mountain mountain-4"></div>
+  </div>
+
+  <!-- Sol Inti animado -->
+  <div class="inti-sun"></div>
+
+  <!-- Nubes flotantes -->
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+
+  <!-- Llamas caminando -->
+  <div class="walking-llama llama-1">🦙</div>
+  <div class="walking-llama llama-2">🦙</div>
+
+  <!-- Card principal -->
+  <div class="login-card">
+    <!-- GIF temático de viaje -->
+    <app-image-renderer
+      imageUrl="https://media1.tenor.com/m/iL_1PZcEroEAAAAC/laugh-hard-laughing-out-loud.gif"></app-image-renderer>
+
+    <!-- Título decorativo -->
+    <div class="title-container">
+      <h1 class="cusco-title">
+        <span class="title-icon">✈️</span>
+        Aventura a Machu Picchu!
+        <span class="title-icon">🏔️</span>
+      </h1>
+      <div class="subtitle-decoration">
+        <span class="decoration-line"></span>
+        <span class="decoration-star">⭐</span>
+        <span class="decoration-line"></span>
+      </div>
+      <p class="hint-text">Ayuda: prueba nombre de comidas, lugares, animales... no importa mayúsculas o minúsculas!</p>
     </div>
+
+    <!-- Input estilo andino -->
     <bunny-input [control]="palabraControl"></bunny-input>
-    <app-button [disabled]="palabraControl.invalid" [label]="'Prueba aquí!'" (click)="validateWord()"></app-button>
-    <div class="link shake-on-hover" (click)="goToExternal()">Ver Excel de pagos</div>
-    <lib-button [variant]="'primary'" size="lg" [loading]="true">test</lib-button>
+
+    <!-- Botón principal -->
+    <app-button [disabled]="palabraControl.invalid" [label]="'🎫 Obtener Boleto!'"
+      (click)="validateWord()"></app-button>
+
+    <!-- Link decorado -->
+    <div class="link-cusco shake-on-hover" (click)="goToExternal()">
+      <span>📋</span> Ver Excel de pagos <span>📋</span>
+    </div>
   </div>
 </div>
 
-
-
-<div class="ayuda" (click)="openNotes()">
-  <app-image-renderer [circle]="true"
-    imageUrl="https://media1.tenor.com/m/ICGSBfQQFxUAAAAd/baby-pepper-pepper.gif"></app-image-renderer>
+<!-- Botones flotantes -->
+<div class="ayuda-cusco" (click)="openNotes()">
+  <div class="ayuda-icon">🗺️</div>
 </div>
-<div class="ayuda2" (click)="openModalGames()">
-  <app-image-renderer [circle]="true"
-    imageUrl="https://media.tenor.com/Q0anovSbMjoAAAAi/fullcircle-skate.gif"></app-image-renderer>
+<div class="ayuda-cusco-right" (click)="openModalGames()">
+  <div class="ayuda-icon">🎮</div>
 </div>
 
-<app-popup *ngIf="modalVerificarIntentos" (clickClose)="closeModalVerificar()" label="Alto ahi responda con cuidado!!">
+<!-- Popup de verificación -->
+<app-popup *ngIf="modalVerificarIntentos" (clickClose)="closeModalVerificar()"
+  label="Alto ahí, responda con cuidado!! 🛑">
   <app-image-renderer *ngIf="modalVerificarIntentos.urlImg"
     [imageUrl]="modalVerificarIntentos.urlImg"></app-image-renderer>
   <h2>{{modalVerificarIntentos.question}}</h2>

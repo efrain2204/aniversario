@@ -86,14 +86,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // Limpiar el intervalo cuando el componente se destruye
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }
   }
 
   hearts() {
-    const container = document.querySelector('.containerHeart')!;
+    const container = document.querySelector('.cusco-container')!;
     const creat = document.createElement('div')
     const creat2 = document.createElement('div')
     const creat3 = document.createElement('div')
@@ -102,10 +101,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     creat2.classList.add('hearts');
     creat3.classList.add('hearts');
     creat4.classList.add('hearts');
-    creat.innerHTML = `🐇`
-    creat2.innerHTML = `🐐`
-    creat3.innerHTML = `🍂`
-    creat4.innerHTML = `🌿`
+    creat.innerHTML = `🦙`
+    creat2.innerHTML = `🏔️`
+    creat3.innerHTML = `☀️`
+    creat4.innerHTML = `🍃`
 
     creat.style.left = Math.random() * 100 + 'vw';
     creat2.style.left = Math.random() * 100 + 'vw';
@@ -134,9 +133,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       if (this.listMagicWord.includes(word.toLowerCase())) {
         this.authService.allowAccess = true;
         this.modalVerificarIntentos = {
-          question: `${this.palabraControl.value ?? ''}: es la correcta, felicitaciones!!`,
+          question: `${this.palabraControl.value ?? ''}: es la correcta, bienvenido a Machu Picchu!!`,
           urlImg: this.animalesFelicesIM.getRandomImage(),
-          button1Text: 'Reclama tu premio!',
+          button1Text: '🎫 Reclama tu boleto!',
           onButton1Click: () => {
             this.router.navigate(['/dashboard']);
           }
@@ -144,9 +143,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       } else {
         this.modalVerificarIntentos = {
-          question: `${this.palabraControl.value ?? ''}: no es la correcta, F!!`,
+          question: `${this.palabraControl.value ?? ''}: no es la correcta, la llama se fue!`,
           urlImg: this.animalesEquivocadosIM.getRandomImage(),
-          button1Text: 'Revisa la palabra ratona!',
+          button1Text: '🗺️ Intenta otra palabra!',
           onButton1Click: () => {
             this.closeModalVerificar()
           }
@@ -162,9 +161,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   openModalGames() {
     this.modalVerificarIntentos = {
-      question: 'Aqui podras jugar algunos juegos que te permitiran saltarte la palabra magica!',
+      question: 'Aqui podras jugar algunos juegos que te permitiran saltarte la palabra magica del viaje!',
       urlImg: this.gatosJugandoIM.getRandomImage(),
-      button1Text: 'Vamos a jugar!',
+      button1Text: '🎮 Vamos a jugar!',
       onButton1Click: () => {
         this.router.navigate(['/games']);
       }

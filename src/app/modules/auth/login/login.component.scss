@@ -1,4 +1,5 @@
-.containerHeart {
+/* ====== CONTENEDOR PRINCIPAL CUSCO ====== */
+.cusco-container {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -8,74 +9,583 @@
   align-items: center;
   flex-direction: column;
   font-family: sans-serif;
-  background: radial-gradient(circle at 25% 30%, #a8d5ba 0%, transparent 30%),
-    radial-gradient(circle at 70% 40%, #6b8e23 0%, transparent 25%),
-    radial-gradient(circle at 30% 75%, #c2b280 0%, transparent 25%),
-    radial-gradient(circle at 80% 75%, #556b2f 0%, transparent 35%),
-    linear-gradient(135deg, #e6d17f 0%, #b4c292 40%, #5c743d 100%);
-  background-blend-mode: screen, multiply, overlay, lighten, normal;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(180deg,
+      #1a237e 0%,
+      #283593 15%,
+      #3949ab 30%,
+      #5c6bc0 45%,
+      #7986cb 55%,
+      #81c784 65%,
+      #66bb6a 72%,
+      #4caf50 80%,
+      #388e3c 100%);
 }
 
+/* ====== MONTAÑAS DECORATIVAS ====== */
+.mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mountain {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.mountain-1 {
+  left: -5%;
+  border-width: 0 250px 300px 250px;
+  border-color: transparent transparent #2e7d32 transparent;
+  animation: mountainFloat 20s ease-in-out infinite;
+}
+
+.mountain-2 {
+  left: 20%;
+  border-width: 0 300px 350px 300px;
+  border-color: transparent transparent #1b5e20 transparent;
+  animation: mountainFloat 25s ease-in-out infinite;
+}
+
+.mountain-3 {
+  right: -5%;
+  border-width: 0 280px 320px 280px;
+  border-color: transparent transparent #33691e transparent;
+  animation: mountainFloat 22s ease-in-out infinite;
+}
+
+.mountain-4 {
+  right: 25%;
+  border-width: 0 200px 250px 200px;
+  border-color: transparent transparent #4caf50 transparent;
+  animation: mountainFloat 18s ease-in-out infinite;
+}
+
+@keyframes mountainFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ====== SOL INTI ====== */
+.inti-sun {
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #ffd700 0%, #ffb300 40%, #ff8f00 70%, transparent 100%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 40px #ffd700,
+    0 0 80px #ffb300,
+    0 0 120px rgba(255, 215, 0, 0.5);
+  animation: sunGlow 4s ease-in-out infinite, sunRotate 20s linear infinite;
+  z-index: 2;
+}
+
+.inti-sun::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 3px dashed #ffc107;
+  border-radius: 50%;
+  animation: sunRay 10s linear infinite;
+}
+
+.inti-sun::after {
+  content: '';
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  right: -25px;
+  bottom: -25px;
+  border: 2px dotted rgba(255, 193, 7, 0.6);
+  border-radius: 50%;
+  animation: sunRay 15s linear infinite reverse;
+}
+
+@keyframes sunGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 40px #ffd700, 0 0 80px #ffb300, 0 0 120px rgba(255, 215, 0, 0.5);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 60px #ffd700, 0 0 100px #ffb300, 0 0 140px rgba(255, 215, 0, 0.6);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes sunRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sunRay {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ====== NUBES FLOTANTES ====== */
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  z-index: 2;
+  filter: blur(3px);
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 100px;
+  height: 40px;
+  top: 15%;
+  left: -100px;
+  animation: cloudDrift 35s linear infinite;
+}
+
+.cloud-1::before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 15px;
+}
+
+.cloud-1::after {
+  width: 60px;
+  height: 40px;
+  top: -15px;
+  left: 40px;
+}
+
+.cloud-2 {
+  width: 120px;
+  height: 45px;
+  top: 25%;
+  left: -120px;
+  animation: cloudDrift 45s linear infinite;
+  animation-delay: 10s;
+}
+
+.cloud-2::before {
+  width: 55px;
+  height: 55px;
+  top: -30px;
+  left: 20px;
+}
+
+.cloud-2::after {
+  width: 65px;
+  height: 45px;
+  top: -18px;
+  left: 50px;
+}
+
+.cloud-3 {
+  width: 80px;
+  height: 35px;
+  top: 10%;
+  left: -80px;
+  animation: cloudDrift 40s linear infinite;
+  animation-delay: 20s;
+}
+
+.cloud-3::before {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: 10px;
+}
+
+.cloud-3::after {
+  width: 50px;
+  height: 35px;
+  top: -12px;
+  left: 30px;
+}
+
+@keyframes cloudDrift {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(100vw + 200px));
+  }
+}
+
+/* ====== LLAMAS CAMINANDO ====== */
+.walking-llama {
+  position: absolute;
+  font-size: 40px;
+  bottom: 15%;
+  z-index: 3;
+  animation: llamaWalk 30s linear infinite;
+}
+
+.llama-1 {
+  animation-duration: 35s;
+}
+
+.llama-2 {
+  animation-duration: 40s;
+  animation-delay: 15s;
+  font-size: 35px;
+  bottom: 12%;
+}
+
+@keyframes llamaWalk {
+  from {
+    transform: translateX(-100px) scaleX(1);
+  }
+
+  to {
+    transform: translateX(calc(100vw + 100px)) scaleX(1);
+  }
+}
+
+/* ====== CARD PRINCIPAL ====== */
+.login-card {
+  width: 340px;
+  padding: 30px;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 248, 225, 0.9) 50%,
+      rgba(255, 243, 224, 0.9) 100%);
+  border-radius: 25px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 4px rgba(255, 215, 0, 0.4),
+    inset 0 0 30px rgba(255, 215, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg,
+      #dc143c, #ffd700, #228b22, #8b008b, #dc143c, #ffd700, #228b22);
+  background-size: 400% 400%;
+  border-radius: 28px;
+  z-index: -1;
+  animation: borderShimmer 8s linear infinite;
+}
+
+@keyframes cardFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes borderShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ====== TÍTULO ====== */
+.title-container {
+  text-align: center;
+}
+
+.cusco-title {
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #dc143c, #8b008b, #dc143c);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleShine 3s linear infinite;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+@keyframes titleShine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.title-icon {
+  font-size: 28px;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+.title-icon:first-child {
+  animation-delay: 0s;
+}
+
+.title-icon:last-child {
+  animation-delay: 0.3s;
+}
+
+@keyframes iconBounce {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-5px) rotate(-5deg);
+  }
+
+  75% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+.subtitle-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.decoration-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  animation: lineExpand 2s ease-in-out infinite;
+}
+
+@keyframes lineExpand {
+
+  0%,
+  100% {
+    width: 60px;
+  }
+
+  50% {
+    width: 80px;
+  }
+}
+
+.decoration-star {
+  font-size: 16px;
+  animation: starSpin 3s linear infinite;
+}
+
+@keyframes starSpin {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.hint-text {
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  opacity: 0.9;
+}
+
+/* ====== LINK CUSCO ====== */
+.link-cusco {
+  font-weight: bold;
+  background: linear-gradient(135deg, #dc143c, #ff6b35);
+  color: white;
+  border-radius: 25px;
+  padding: 12px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
+  transition: all 0.3s ease;
+}
+
+.link-cusco:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(220, 20, 60, 0.6);
+}
+
+/* ====== BOTONES DE AYUDA ====== */
+.ayuda-cusco {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  bottom: 15px;
+  left: 15px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.5);
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  animation: ayudaPulse 3s ease-in-out infinite;
+}
+
+.ayuda-cusco:hover {
+  transform: scale(1.1);
+}
+
+.ayuda-cusco-right {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  bottom: 15px;
+  right: 15px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd700, #ff8f00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  animation: ayudaPulse 3s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.ayuda-cusco-right:hover {
+  transform: scale(1.1);
+}
+
+.ayuda-icon {
+  font-size: 26px;
+}
+
+@keyframes ayudaPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 4px 25px rgba(76, 175, 80, 0.8), 0 0 40px rgba(76, 175, 80, 0.3);
+  }
+}
+
+/* ====== ELEMENTOS CAYENDO ====== */
 ::ng-deep .hearts {
-  font-size: 23px;
+  font-size: 28px;
   font-weight: bold;
   position: fixed;
   transform: translateY(0%);
   top: -1vh;
   left: 0;
-  animation: fall 20s ease-in-out infinite;
+  animation: cuscoFall 20s ease-in-out infinite;
+  z-index: 5;
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh);
+@keyframes cuscoFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
   }
 }
 
-.login {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-
-.ayuda {
-  position: fixed;
-  width: 50px;
-  height: 50px;
-  bottom: 10px;
-  left: 10px;
-  border-radius: 50%;
-  box-shadow: 1px 1px 21px white;
-}
-
-.ayuda2 {
-  position: fixed;
-  width: 50px;
-  height: 50px;
-  bottom: 10px;
-  right: 10px;
-  border-radius: 50%;
-  box-shadow: 1px 1px 21px white;
-}
-
-.link{
-  font-weight: bold;
-  background: #34c327;
-  border-radius: 20px;
-  padding: 10px;
-  cursor: pointer;
-}
-
+/* ====== SHAKE ANIMATION ====== */
 @keyframes subtle-shake {
-  0%   { transform: translateX(0); }
-  20%  { transform: translateX(-2px); }
-  40%  { transform: translateX(2px); }
-  60%  { transform: translateX(-1px); }
-  80%  { transform: translateX(1px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-2px);
+  }
+
+  40% {
+    transform: translateX(2px);
+  }
+
+  60% {
+    transform: translateX(-1px);
+  }
+
+  80% {
+    transform: translateX(1px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .shake-on-hover {
@@ -84,5 +594,24 @@
 
   &:hover {
     animation: subtle-shake 0.35s ease-in-out;
+  }
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 480px) {
+  .login-card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .cusco-title {
+    font-size: 20px;
+  }
+
+  .inti-sun {
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    right: 30px;
   }
 }
