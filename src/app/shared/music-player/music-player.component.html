@@ -1,9 +1,120 @@
-<div class="music-player">
-  <div class="song-title">{{ currentSong.title }}</div>
-  <div class="controls">
-    <button (click)="playPause()" class="play-pause-btn">
-      {{ isPlaying ? '||' : '▶' }}
+<div class="music-player-wrapper" [class.expanded]="isExpanded">
+  <!-- Botón flotante minimizado -->
+  <button class="music-fab" (click)="toggleExpand()" *ngIf="!isExpanded">
+    <div class="fab-pulse" *ngIf="isPlaying"></div>
+    <svg *ngIf="!isPlaying" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+    <svg *ngIf="isPlaying" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+  </button>
+
+  <!-- Panel expandido -->
+  <div class="music-panel" *ngIf="isExpanded">
+    <!-- Header -->
+    <div class="panel-header">
+      <span class="panel-title">🎵 Reproductor</span>
+      <button class="minimize-btn" (click)="toggleExpand()">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Art + Info -->
+    <div class="panel-body">
+      <div class="song-art" [class.playing]="isPlaying">
+        <div class="art-ring"></div>
+        <span class="art-emoji">🎶</span>
+      </div>
+
+      <div class="song-info">
+        <div class="song-title">{{ currentSong.title }}</div>
+
+        <!-- Progress -->
+        <div class="progress-section">
+          <span class="time">{{ formattedCurrentTime }}</span>
+          <div class="progress-bar">
+            <input 
+              type="range" 
+              min="0" 
+              [max]="duration" 
+              [value]="currentTime"
+              (input)="onSeek($event)"
+              class="progress-slider"
+            >
+            <div class="progress-track">
+              <div class="progress-fill" [style.width.%]="progressPercent"></div>
+            </div>
+          </div>
+          <span class="time">{{ formattedDuration }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controles -->
+    <div class="panel-controls">
+      <button class="ctrl-btn" (click)="prevSong()">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+          <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+        </svg>
+      </button>
+
+      <button class="ctrl-btn play" (click)="playPause()">
+        <svg *ngIf="!isPlaying" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg *ngIf="isPlaying" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+
+      <button class="ctrl-btn" (click)="nextSong()">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+          <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Volumen -->
+    <div class="panel-volume">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+      </svg>
+      <input 
+        type="range" 
+        min="0" 
+        max="1" 
+        step="0.01"
+        [value]="volume"
+        (input)="onVolumeChange($event)"
+        class="volume-slider"
+      >
+    </div>
+
+    <!-- Playlist toggle -->
+    <button class="playlist-btn" (click)="togglePlaylist()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/>
+      </svg>
+      <span>Playlist</span>
     </button>
-    <button (click)="nextSong()" class="next-btn">Sig</button>
+
+    <!-- Lista de canciones -->
+    <div class="playlist-list" *ngIf="showPlaylist">
+      <div 
+        class="playlist-item" 
+        *ngFor="let song of songs; let i = index"
+        [class.active]="i === currentSongIndex"
+        (click)="selectSong(i)"
+      >
+        <span class="item-num">{{ i + 1 }}</span>
+        <span class="item-name">{{ song.title }}</span>
+        <span class="item-status" *ngIf="i === currentSongIndex">
+          {{ isPlaying ? '▶' : '⏸' }}
+        </span>
+      </div>
+    </div>
   </div>
 </div>

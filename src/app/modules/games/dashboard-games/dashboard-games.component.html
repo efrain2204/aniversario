@@ -17,6 +17,79 @@
       <span routerLink="/games/roulette">Ruleta</span>
       <span routerLink="/games/compatibility">Compatibilidad</span>
     </div>
+
+    <!-- Botón checklist de viaje -->
+    <button class="checklist-toggle" (click)="toggleChecklist()">
+      <span class="toggle-icon">🎒</span>
+      <span>Checklist de Viaje</span>
+      <span class="toggle-arrow" [class.open]="showChecklist">▼</span>
+    </button>
+
+    <!-- Panel de checklist -->
+    <div class="checklist-panel" *ngIf="showChecklist">
+      <!-- Header con progreso total -->
+      <div class="checklist-header">
+        <h2>✈️ Tour Cusco - Machu Picchu</h2>
+        <p class="trip-subtitle">4 días / 3 noches</p>
+        <div class="total-progress">
+          <div class="progress-bar-total">
+            <div class="progress-fill-total" [style.width.%]="getTotalProgress()"></div>
+          </div>
+          <span class="progress-text">{{ getTotalProgress() }}% completado</span>
+        </div>
+      </div>
+
+      <!-- Días -->
+      <div class="days-container">
+        <div class="day-section" *ngFor="let day of [1,2,3,4]">
+          <div class="day-header">
+            <span class="day-emoji">{{ getDayEmoji(day) }}</span>
+            <span class="day-title">{{ getDayName(day) }}</span>
+            <span class="day-progress">{{ getProgressByDay(day) }}%</span>
+          </div>
+          <div class="day-progress-bar">
+            <div class="day-progress-fill" [style.width.%]="getProgressByDay(day)"></div>
+          </div>
+
+          <!-- Items del día -->
+          <div class="items-list">
+            <div 
+              class="checklist-item" 
+              *ngFor="let item of getItemsByDay(day)"
+              [class.completed]="item.completed"
+              (click)="toggleItem(item)"
+            >
+              <span class="item-emoji">{{ item.emoji }}</span>
+              <span class="item-checkbox">{{ item.completed ? '✅' : '⬜' }}</span>
+              <span class="item-text">{{ item.text }}</span>
+              <button class="item-remove" (click)="removeItem(item); $event.stopPropagation()">×</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agregar nuevo item -->
+      <div class="add-item-section">
+        <h3>➕ Agregar actividad</h3>
+        <div class="add-form">
+          <select [(ngModel)]="selectedDay" class="day-select">
+            <option [value]="1">Día 1</option>
+            <option [value]="2">Día 2</option>
+            <option [value]="3">Día 3</option>
+            <option [value]="4">Día 4</option>
+          </select>
+          <input 
+            type="text" 
+            [(ngModel)]="newItemText" 
+            placeholder="Nueva actividad..." 
+            class="add-input"
+            (keyup.enter)="addItem()"
+          >
+          <button class="add-btn" (click)="addItem()">+</button>
+        </div>
+      </div>
+    </div>
+
     <router-outlet></router-outlet>
     <img (click)="back()" src="https://cdn-icons-png.flaticon.com/512/3588/3588230.png" width="50" height="50" alt="album" class="back">
   </div>

@@ -1,5 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+interface Song {
+  title: string;
+  url: string;
+}
 
 @Component({
   selector: 'music-player',
@@ -8,8 +13,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './music-player.component.html',
   styleUrls: ['./music-player.component.scss']
 })
-export class MusicPlayerComponent implements OnInit{
-  songs = [
+export class MusicPlayerComponent implements OnInit, OnDestroy {
+  songs: Song[] = [
     { title: 'kimetzu!!!', url: 'assets/sounds/songs/kimetsu.mp3' },
     { title: 'chofi', url: 'assets/sounds/songs/chofi.mp3' },
     { title: 'vuelve', url: 'assets/sounds/songs/vuelve.mp3' },
@@ -19,22 +24,59 @@ export class MusicPlayerComponent implements OnInit{
 
   currentSongIndex = 0;
   isPlaying = false;
-  audio: HTMLAudioElement = new Audio(this.songs[this.currentSongIndex].url);
+  isExpanded = false;
+  showPlaylist = false;
+  currentTime = 0;
+  duration = 0;
+  volume = 0.7;
 
-  ngOnInit(): void {
-    this.loadSong();
-    this.audio.addEventListener('ended', this.nextSong.bind(this)); // Avanza a la siguiente canción al terminar
-  }
-  loadSong(): void {
-    this.audio.src = this.songs[this.currentSongIndex].url;
-    this.audio.load();
-  }
+  private audio: HTMLAudioElement = new Audio();
 
-  get currentSong() {
+  get currentSong(): Song {
     return this.songs[this.currentSongIndex];
   }
 
-  playPause() {
+  get progressPercent(): number {
+    return this.duration > 0 ? (this.currentTime / this.duration) * 100 : 0;
+  }
+
+  get formattedCurrentTime(): string {
+    const mins = Math.floor(this.currentTime / 60);
+    const secs = Math.floor(this.currentTime % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  }
+
+  get formattedDuration(): string {
+    const mins = Math.floor(this.duration / 60);
+    const secs = Math.floor(this.duration % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  }
+
+  ngOnInit(): void {
+    this.audio.volume = this.volume;
+    this.audio.src = this.songs[this.currentSongIndex].url;
+    this.audio.addEventListener('ended', () => this.nextSong());
+    this.audio.addEventListener('loadedmetadata', () => {
+      this.duration = this.audio.duration;
+    });
+    this.audio.addEventListener('timeupdate', () => {
+      this.currentTime = this.audio.currentTime;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.audio.pause();
+    this.audio.src = '';
+  }
+
+  toggleExpand(): void {
+    this.isExpanded = !this.isExpanded;
+    if (!this.isExpanded) {
+      this.showPlaylist = false;
+    }
+  }
+
+  playPause(): void {
     if (this.isPlaying) {
       this.audio.pause();
     } else {
@@ -43,19 +85,52 @@ export class MusicPlayerComponent implements OnInit{
     this.isPlaying = !this.isPlaying;
   }
 
-  nextSong() {
-    // Pausar la canción actual antes de cambiar
+  nextSong(): void {
     this.audio.pause();
-    this.audio.currentTime = 0; // Reiniciar el tiempo a 0
-
-    // Cambiar a la siguiente canción
+    this.audio.currentTime = 0;
+    this.isPlaying = false;
     this.currentSongIndex = (this.currentSongIndex + 1) % this.songs.length;
-    // this.audio = new Audio(this.songs[this.currentSongIndex].url);
-    this.loadSong()
+    this.audio.src = this.songs[this.currentSongIndex].url;
+    this.audio.load();
+    this.audio.play();
+    this.isPlaying = true;
+  }
 
-    // Reproducir la nueva canción si estaba en reproducción
-    if (this.isPlaying) {
-      this.audio.play();
-    }
+  prevSong(): void {
+    this.audio.pause();
+    this.audio.currentTime = 0;
+    this.isPlaying = false;
+    this.currentSongIndex = (this.currentSongIndex - 1 + this.songs.length) % this.songs.length;
+    this.audio.src = this.songs[this.currentSongIndex].url;
+    this.audio.load();
+    this.audio.play();
+    this.isPlaying = true;
+  }
+
+  selectSong(index: number): void {
+    this.audio.pause();
+    this.audio.currentTime = 0;
+    this.isPlaying = false;
+    this.currentSongIndex = index;
+    this.showPlaylist = false;
+    this.audio.src = this.songs[this.currentSongIndex].url;
+    this.audio.load();
+    this.audio.play();
+    this.isPlaying = true;
+  }
+
+  onSeek(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.audio.currentTime = parseFloat(target.value);
+  }
+
+  onVolumeChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.volume = parseFloat(target.value);
+    this.audio.volume = this.volume;
+  }
+
+  togglePlaylist(): void {
+    this.showPlaylist = !this.showPlaylist;
   }
 }

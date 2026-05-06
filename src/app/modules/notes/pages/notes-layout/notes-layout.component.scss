@@ -1,74 +1,437 @@
-.container-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.stylish-title {
-  animation: fadeIn 1.5s ease-in-out;
-
-  span {
-    font-size: 3rem;
-    /* Tamaño grande y llamativo */
-    text-align: center;
-    /* Centrado en la página */
-    background: black;
-    background-clip: text;
-    /* Aplica el degradado solo al texto */
-    -webkit-background-clip: text;
-    color: transparent;
-    /* Hace que el fondo sea visible */
-    margin: 20px 0;
-    padding: 0;
-    line-height: 1.2;
-  }
-}
-
-/* Animación de entrada */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-.add {
+/* ====== FONDO DE VIAJE ====== */
+.travel-bg {
   position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 10px;
-  right: 10px;
-  border-radius: 50%;
-  box-shadow: 1px 1px 21px #ff5f6d;
-}
-
-.bg-img {
-  position: fixed;
-  /* Hacer que el fondo sea fijo */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #d8f3dc, #95d5b2, #52b788, #2d6a4f);
-  z-index: -1;
-  /* Asegurarse de que el fondo no bloquee el contenido */
+  background: linear-gradient(180deg,
+      #87ceeb 0%,
+      #98d8e8 20%,
+      #b8e6c8 40%,
+      #7cb890 60%,
+      #4a8c5c 80%,
+      #2d6a4f 100%);
+  z-index: -2;
+  overflow: hidden;
 }
 
-.todoapp {
-  padding: 50px 0 150px 0;
+/* Montañas */
+.mountain-bg {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
 }
 
-.back {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
+.mountain-1 {
+  left: -10%;
+  border-width: 0 300px 400px 300px;
+  border-color: transparent transparent #1b5e20 transparent;
+  opacity: 0.6;
+}
+
+.mountain-2 {
+  left: 25%;
+  border-width: 0 350px 450px 350px;
+  border-color: transparent transparent #2e7d32 transparent;
+  opacity: 0.5;
+}
+
+.mountain-3 {
+  right: -5%;
+  border-width: 0 280px 380px 280px;
+  border-color: transparent transparent #33691e transparent;
+  opacity: 0.55;
+}
+
+/* Nubes */
+.cloud-bg {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 50%;
-  box-shadow: 1px 1px 10px #f48fb1;
-  background: white;
+  filter: blur(4px);
+}
+
+.cloud-bg::before,
+.cloud-bg::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 120px;
+  height: 50px;
+  top: 10%;
+  left: -120px;
+  animation: cloudFloat 40s linear infinite;
+}
+
+.cloud-1::before {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 20px;
+}
+
+.cloud-1::after {
+  width: 70px;
+  height: 50px;
+  top: -20px;
+  left: 50px;
+}
+
+.cloud-2 {
+  width: 100px;
+  height: 45px;
+  top: 20%;
+  left: -100px;
+  animation: cloudFloat 50s linear infinite;
+  animation-delay: 15s;
+}
+
+.cloud-2::before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 15px;
+}
+
+.cloud-2::after {
+  width: 60px;
+  height: 45px;
+  top: -15px;
+  left: 40px;
+}
+
+.cloud-3 {
+  width: 90px;
+  height: 40px;
+  top: 5%;
+  left: -90px;
+  animation: cloudFloat 45s linear infinite;
+  animation-delay: 25s;
+}
+
+.cloud-3::before {
+  width: 45px;
+  height: 45px;
+  top: -22px;
+  left: 12px;
+}
+
+.cloud-3::after {
+  width: 55px;
+  height: 40px;
+  top: -12px;
+  left: 35px;
+}
+
+@keyframes cloudFloat {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(100vw + 200px));
+  }
+}
+
+/* Llama decorativa */
+.llama-bg {
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  font-size: 60px;
+  opacity: 0.3;
+  animation: llamaSway 8s ease-in-out infinite;
+}
+
+@keyframes llamaSway {
+
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.notes-container {
+  padding: 30px 20px 150px;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* ====== HEADER PASAPORTE ====== */
+.passport-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 25px;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 248, 225, 0.85) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 3px rgba(255, 215, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #dc143c, #ffd700, #228b22, #ffd700, #dc143c);
+  }
+}
+
+.passport-stamp {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dc143c, #8b0000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 4px 15px rgba(220, 20, 60, 0.4),
+    inset 0 0 0 3px rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+
+  &.stamp-right {
+    background: linear-gradient(135deg, #228b22, #006400);
+    box-shadow:
+      0 4px 15px rgba(34, 139, 34, 0.4),
+      inset 0 0 0 3px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.stamp-icon {
+  font-size: 32px;
+}
+
+.title-section {
+  text-align: center;
+}
+
+.travel-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  background: linear-gradient(135deg, #dc143c, #8b008b, #dc143c);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleShine 3s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+@keyframes titleShine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.title-emoji {
+  font-size: 2.5rem;
+  -webkit-text-fill-color: initial;
+  animation: emojiBounce 2s ease-in-out infinite;
+}
+
+.title-emoji:first-child {
+  animation-delay: 0s;
+}
+
+.title-emoji:last-child {
+  animation-delay: 0.3s;
+}
+
+@keyframes emojiBounce {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-5px) rotate(-10deg);
+  }
+
+  75% {
+    transform: translateY(-5px) rotate(10deg);
+  }
+}
+
+.travel-subtitle {
+  font-size: 1rem;
+  color: #5d4037;
+  margin: 8px 0 0;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* ====== BOTONES FLOTANTES ====== */
+.travel-btn {
+  position: fixed;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.back-btn {
+  bottom: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
+  }
+}
+
+.add-btn {
+  bottom: 20px;
+  right: 100px;
+  background: linear-gradient(135deg, #ffd700, #ff8f00);
+  color: white;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+  }
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .notes-container {
+    padding: 20px 15px 140px;
+  }
+
+  .passport-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .passport-stamp {
+    width: 60px;
+    height: 60px;
+  }
+
+  .stamp-icon {
+    font-size: 28px;
+  }
+
+  .travel-title {
+    font-size: 2rem;
+  }
+
+  .title-emoji {
+    font-size: 2rem;
+  }
+
+  .travel-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .notes-container {
+    padding: 15px 10px 130px;
+  }
+
+  .passport-header {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .passport-stamp {
+    width: 50px;
+    height: 50px;
+  }
+
+  .stamp-icon {
+    font-size: 24px;
+  }
+
+  .travel-title {
+    font-size: 1.5rem;
+  }
+
+  .title-emoji {
+    font-size: 1.5rem;
+  }
+
+  .travel-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .travel-btn {
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+  }
+
+  .back-btn {
+    left: 15px;
+  }
+
+  .llama-bg {
+    font-size: 40px;
+    bottom: 20%;
+    right: 5%;
+  }
+}
+
+@media (max-width: 360px) {
+  .travel-title {
+    font-size: 1.3rem;
+  }
+
+  .title-emoji {
+    font-size: 1.3rem;
+  }
+
+  .passport-header {
+    padding: 12px;
+  }
+
+  .travel-btn {
+    width: 45px;
+    height: 45px;
+  }
 }
